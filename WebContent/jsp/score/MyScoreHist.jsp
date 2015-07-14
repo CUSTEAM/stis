@@ -191,22 +191,33 @@ $(document).ready(function() {
 	
 	<div class="accordion-group">
 		<div class="accordion-heading">
-		<p class="accordion-toggle" data-toggle="collapse" data-parent="#years" href="#year">
-		共${fn:length(scoreHist)}學期, 
-		應修 ${credit}學分,
-		必修取得  ${credit1}學分,
-		選修取得 ${credit2}學分,
-		通識取得 ${credit3}學分,
-		共取得 ${credit1+credit2+credit3}學分, 不及格${credit-(credit1+credit2+credit3)}學分<br>
+		<div class="accordion-toggle" data-toggle="collapse" data-parent="#years" href="#year">
 		
-		<c:if test="${!empty skill}">
-		已取得證照<br>
-		<c:forEach items="${skill}" var="s">
-		${s.Name}, ${s.Level} - ${s.DeptName}<br>
-		</c:forEach>
-		</c:if>
+		<p >
+				<abbr title="HyperText Markup Language" class="initialism">共${fn:length(scoreHist)}學期</abbr> 應修 ${credit}學分, 必修取得  ${credit1}學分, 選修取得 ${credit2}學分,
+				通識取得 ${credit3}學分, 共取得 ${credit1+credit2+credit3}學分, 不及格${credit-(credit1+credit2+credit3)}學分
+			</p>	
+			<c:if test="${!empty skill}">
+			<table class="table">
+			<tr>
+				<td><span class="label label-info">已取得證照</span></td>
+			</tr>
+			<c:forEach items="${skill}" var="s">
+			<tr>
+				<td>${s.Name}, ${s.Level} - ${s.DeptName}</td>
+			</tr>
+			</c:forEach>
+			</table>
+			</c:if>
+		
+		</table>
+		
+		
+		
+		
 		
 		<button type="button" style="float:right;"class="btn btn-mini"><i style="margin-top:2px;" class="icon-eye-close"></i></i></button></p>
+		</div>
 		</div>		
 		<div id="year" class="accordion-body collapse">
 			<div class="accordion-inner">
