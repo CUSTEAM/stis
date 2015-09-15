@@ -22,7 +22,7 @@ public class getCourse extends BaseAction{
 		
 		Classes c=(Classes) getSession().getAttribute("myGrade");//初入時已計算的實體或虛擬年級資訊		
 		List list=df.sqlGet("SELECT Select_Limit, (SELECT COUNT(*)FROM Seld WHERE Dtime_oid=d.Oid) as seled, " +
-		"cl.ClassName, cd.name as optName, d.credit, d.thour, d.elearning, " +
+		"cl.ClassName, cd.name as optName, d.credit, d.thour, d.elearning, d.nonSeld," +
 		"d.Oid, c.chi_name, dc.week, dc.begin, dc.end, e.cname FROM CODE_DTIME_OPT cd," +
 		"Dtime d, empl e, Dtime_class dc, Dtime_cross o, Csno c, Class cl " +
 		"WHERE cd.id=d.opt AND cl.ClassNo=d.depart_class AND c.cscode=d.cscode AND e.idno=d.techid AND d.Select_Limit>0 AND " +
@@ -38,7 +38,7 @@ public class getCourse extends BaseAction{
 		
 		//重修低年級課程	
 		list.addAll(df.sqlGet("SELECT Select_Limit, (SELECT COUNT(*)FROM Seld WHERE Dtime_oid=d.Oid) as seled, " +
-		"cl.ClassName, cd.name as optName, d.credit, d.thour, d.elearning, " +
+		"cl.ClassName, cd.name as optName, d.credit, d.thour, d.elearning, d.nonSeld," +
 		"d.Oid, c.chi_name, dc.week, dc.begin, dc.end, e.cname FROM CODE_DTIME_OPT cd, Dtime d, empl e, " +
 		"Dtime_class dc, Csno c, Class cl WHERE cd.id=d.opt AND d.Sterm='"+request.getParameter("term")+"' AND cl.ClassNo=d.depart_class AND " +
 		"c.cscode=d.cscode AND e.idno=d.techid AND d.Oid=dc.Dtime_oid AND d.Select_Limit>0 AND " +

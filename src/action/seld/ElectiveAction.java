@@ -37,13 +37,13 @@ public class ElectiveAction extends BaseAction{
 				//下學期選下學期的課
 				if(schedule!=null){
 					if(schedule.get("term").equals("2")){
-						schedule=df.sqlGetMap("SELECT s.* FROM Class c, SYS_CALENDAR_ELECTIVE s, stmd st WHERE " +
+						schedule=df.sqlGetMap("SELECT s.*, c.ClassNo FROM Class c, SYS_CALENDAR_ELECTIVE s, stmd st WHERE " +
 						"s.grade=c.Grade AND st.depart_class=c.ClassNo AND c.schoolType=s.depart AND " +
 						"st.student_no='"+stdNo+"' AND begin<'"+sf.format(now)+"' AND end>'"+sf.format(now)+"'");
 					}
 				}								
 			}else{
-				schedule=df.sqlGetMap("SELECT s.* FROM Class c, SYS_CALENDAR_ELECTIVE s, stmd st WHERE " +
+				schedule=df.sqlGetMap("SELECT s.*, c.ClassNo FROM Class c, SYS_CALENDAR_ELECTIVE s, stmd st WHERE " +
 				"s.grade=c.Grade AND st.depart_class=c.ClassNo AND c.schoolType=s.depart AND " +
 				"st.student_no='"+stdNo+"' AND begin<'"+sf.format(now)+"' AND end>'"+sf.format(now)+"'");
 			}
@@ -116,7 +116,7 @@ public class ElectiveAction extends BaseAction{
 		if(schedule!=null){//若有規則給予選課
 			//更新已選課程	
 			request.setAttribute("myClass", df.sqlGet("SELECT cdo.sname as opt, dc.Oid as dcOid, d.thour, d.credit, " +
-			"d.Oid as dtOid, d.techid, e.cname, c.cscode, c.chi_name,dc.*, cl.ClassName FROM stmd st, " +
+			"d.Oid as dtOid, d.techid, e.cname, c.cscode, c.chi_name,dc.*, cl.ClassName, d.nonSeld, d.depart_class as ClassNo FROM stmd st, " +
 			"Seld s, (Dtime d LEFT OUTER JOIN empl e ON d.techid=e.idno), Dtime_class dc, CODE_DTIME_OPT cdo," +
 			"Csno c, Class cl WHERE cdo.id=d.opt AND d.depart_class=cl.ClassNo AND st.student_no=s.student_no AND s.Dtime_oid=d.Oid AND " +
 			"c.cscode=d.cscode AND d.Oid=dc.Dtime_oid AND d.Sterm='"+schedule.get("term")+"' AND s.student_no='"+stdNo+"'"));
@@ -253,7 +253,9 @@ public class ElectiveAction extends BaseAction{
 		int StdSelect = df.sqlGetInt("Select COUNT(e.`Oid`) From Seld e Where e.`Dtime_oid`='"+Dtime_oid+"' ");//取選課人數
 		
 		Message msg = new Message();
-		if(dtime.get("opt").equals("1")){//退本班必修
+		
+		//退本班必修在頁面已預做處理
+		if(dtime.get("opt").equals("1")){
 			if(((Classes)getSession().getAttribute("myGrade")).getClassNo().equals(dtime.get("depart_class"))){
 				msg.setError("退選本班必修課程需經各系認可後由課務單位處理, ");
 				savMessage(msg);
@@ -261,7 +263,8 @@ public class ElectiveAction extends BaseAction{
 			}				
 		}
 		
-		if(dtime.get("nonSeld").equals("1")){//退併班			
+		//退併班在頁面已預做處理
+		if(dtime.get("nonSeld").equals("1")){			
 			msg.setError("退選本課程需經各系認可後由課務單位處理, ");
 			savMessage(msg);
 			return execute();							

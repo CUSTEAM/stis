@@ -42,8 +42,11 @@
 					<td style="font-size:14px;" valign="middle" >
 					<a id="a${w}${c}" class="close" href="#stdInfo" data-toggle="modal" onClick="checkOut(${w}, ${c}, null)">加選</a>
 					<c:forEach items="${myClass}" var="a">			
-						<c:if test="${a.week==w && (c>=a.begin && c<=a.end)}">
-						<button type="submit" id="d${w}${c}" class="close" name="method:del" onClick="$('#Dtime_oid').val('${a.dtOid}')">退選</button>
+						<c:if test="${a.week==w && (c>=a.begin && c<=a.end)}">						
+						
+						<c:if test="${a.nonSeld eq'1' || (a.ClassNo eq schedule.ClassNo && a.opt eq'必')}"><button type="button" id="d${w}${c}" class="close" onClick="alert('依課務單位或系所規定, 此課程不可採用網路退選, 請至各部制課務單位辦理');">管制退選</button></c:if>
+						<c:if test="${a.nonSeld eq'0' && !a.ClassNo eq schedule.ClassNo || a.opt eq'選'}"><button type="submit" id="d${w}${c}" class="close" name="method:del" onClick="$('#Dtime_oid').val('${a.dtOid}')">退選</button></c:if>
+						
 						<script>$("#a${w}${c}").hide();</script>		
 						<div>
 						<small>${a.ClassName}</small><br>
@@ -86,7 +89,8 @@
 					<a id="a${w}${c}" class="close" href="#stdInfo" data-toggle="modal" onClick="checkOut(${w}, ${c}, null)">加選</a>
 					<c:forEach items="${myClass}" var="a">			
 						<c:if test="${a.week==w && (c>=a.begin && c<=a.end)}">
-						<button type="submit" id="d${w}${c}" class="close" name="method:del" onClick="$('#Dtime_oid').val('${a.dtOid}')">退選</button>
+						<c:if test="${a.nonSeld eq'1' || (a.ClassNo eq schedule.ClassNo && a.opt eq'必')}"><button type="button" id="d${w}${c}" class="close" onClick="alert('依課務單位或系所規定, 此課程不可採用網路退選, 請至各部制課務單位辦理');">管制退選</button></c:if>
+						<c:if test="${a.nonSeld eq'0' && !a.ClassNo eq schedule.ClassNo || a.opt eq'選'}"><button type="submit" id="d${w}${c}" class="close" name="method:del" onClick="$('#Dtime_oid').val('${a.dtOid}')">退選</button></c:if>
 						<script>$("#a${w}${c}").hide();</script>		
 						<div>
 						<small>${a.ClassName}</small><br>
@@ -150,6 +154,8 @@ function write(d, week, begin, cs){
 		
 		for(i=0; i<d.result.length; i++){
 			ele="";
+			nonSeld="";
+			if(d.result[i].nonSeld==1)nonSeld="管制退選";
 			if(d.result[i].elearning==1)ele="遠距";
 			if(d.result[i].elearning==2)ele="輔助";
 			if(d.result[i].elearning==3)ele="多媒體";
@@ -161,7 +167,7 @@ function write(d, week, begin, cs){
 			"</td><td nowrap>"+d.result[i].credit+
 			"</td><td>"+d.result[i].thour+
 			"</td><td nowrap>"+d.result[i].seled+"/"+d.result[i].Select_Limit+
-			"</td><td nowrap>"+ele+"</td>";
+			"</td><td nowrap>"+ele+nonSeld+"</td>";
 			if(cs!=null){str+="<td nowrap><small>週"+d.result[i].week+","+d.result[i].begin+"~"+d.result[i].end+"</small></td>";}
 			str+="<td nowrap><button name='method:add' class='btn btn-small btn-danger' onClick='$(\"#Dtime_oid\").val(\""+d.result[i].Oid+"\")'>加選</button></td></tr>";
 		}

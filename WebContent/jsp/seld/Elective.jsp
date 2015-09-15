@@ -16,6 +16,7 @@
     /* new custom width */
     width: 90%;
     /* must be half of the width, minus scrollbar on the left (30px) */
+    margin-right: 45%;
     margin-left: -45%;
 }
 </style>
@@ -30,7 +31,8 @@
 </div>
 </c:if>
 
-<form action="Elective" method="post" onSubmit="return(confirm('部份特殊情況下執行後依規定不可恢復\n確定執行加退選?')); void('')">
+<!--form action="Elective" method="post" onSubmit="return(confirm('部份特殊情況下執行後依規定不可恢復\n確定執行加退選?')); void('')"-->
+<form action="Elective" method="post">
 <!-- Modal -->
 <div id="stdInfo" class="modal hide fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <div class="modal-header">
