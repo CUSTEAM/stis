@@ -32,6 +32,7 @@ public class getCourseByName extends BaseAction{
 		"(o.Sidno='"+c.getSchoolNo()+"' OR o.Sidno='*') AND " +
 		"(o.Didno='"+c.getDeptNo()+"' OR o.Didno='*') AND " +
 		"(o.Grade<="+c.getGrade()+" OR o.Grade='*')AND " +
+		"(o.ClassNo="+c.getSeqNo()+" OR o.ClassNo='*')AND " +
 		"d.cscode NOT IN(SELECT cscode FROM ScoreHist WHERE student_no='" +getSession().getAttribute("userid")+"' AND score>=60) AND "+
 		"c.chi_name LIKE'%"+request.getParameter("cs")+"%' AND d.cscode!='50000' GROUP BY d.Oid");
 		
@@ -45,6 +46,7 @@ public class getCourseByName extends BaseAction{
 		"(cl.SchoolNo='"+c.getSchoolNo()+"')AND " +
 		"(cl.DeptNo='"+c.getDeptNo()+"')AND " +
 		"(cl.Grade<="+c.getGrade()+")AND " +
+		//"(o.ClassNo="+c.getClassNo()+" OR o.ClassNo='*')AND " +
 		"d.cscode NOT IN(SELECT cscode FROM ScoreHist WHERE student_no='" +getSession().getAttribute("userid")+"' AND score>=60) AND "+
 		"c.chi_name LIKE'%"+request.getParameter("cs")+"%' AND d.cscode!='50000' GROUP BY d.Oid"));
 		

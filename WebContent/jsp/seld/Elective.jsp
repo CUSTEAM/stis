@@ -68,7 +68,7 @@
 $(".knob").knob();    
 function getSeldHist(stdNo){    	
     var str;
-    $.get("/eis/getSeldHist?stdNo="+stdNo+"&"+Math.floor(Math.random()*999),
+    $.get("/eis/getSeldHist?stdNo="+stdNo+"&a"+Math.floor(Math.random()*999),
     function(d){    		
    		str="<table class='table table-bordered table-hover'>";    		
    		$("#info").html("");

@@ -1,19 +1,16 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<div class="accordion" id="accordion2">
-	
+<div class="accordion" id="accordion2">	
 	<div class="accordion-group">
 		<div class="accordion-heading">
 		<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse">課程名稱加選</a>
 		</div>
 		<div id="collapse" class="accordion-body collapse">
-			<div class="accordion-inner">		
-			
+			<div class="accordion-inner">
 			<div class="input-prepend control-group input-append">
 				<span class="add-on">課程名稱</span>
 				<input class="span6" id="cs" placeholder="輸入課程名稱片段如: 國, 國文, 國文一" name="cs" autocomplete="off" type="text" />
 				<a id="a" class="btn" href="#stdInfo" data-toggle="modal" onClick="checkOutByName($('#cs').val())">尋找課程</a>
 			</div>
-			
 			</div>
 		</div>
 	</div>
@@ -43,10 +40,8 @@
 					<a id="a${w}${c}" class="close" href="#stdInfo" data-toggle="modal" onClick="checkOut(${w}, ${c}, null)">加選</a>
 					<c:forEach items="${myClass}" var="a">			
 						<c:if test="${a.week==w && (c>=a.begin && c<=a.end)}">						
-						
-						<c:if test="${a.nonSeld eq'1' || (a.ClassNo eq schedule.ClassNo && a.opt eq'必')}"><button type="button" id="d${w}${c}" class="close" onClick="alert('依課務單位或系所規定, 此課程不可採用網路退選, 請至各部制課務單位辦理');">管制退選</button></c:if>
-						<c:if test="${a.nonSeld eq'0' && !a.ClassNo eq schedule.ClassNo || a.opt eq'選'}"><button type="submit" id="d${w}${c}" class="close" name="method:del" onClick="$('#Dtime_oid').val('${a.dtOid}')">退選</button></c:if>
-						
+						<c:if test="${a.nonSeld==1||(a.ClassNo == schedule.ClassNo && a.opt =='必')}"><button type="button" id="d${w}${c}" class="close" onClick="alert('依課務單位或系所規定, 此課程不可採用網路退選, 請至各部制課務單位辦理');">管制退選</button></c:if>
+						<c:if test="${a.nonSeld==0 && a.ClassNo != schedule.ClassNo}"><button type="submit" id="d${w}${c}" class="close" name="method:del" onClick="$('#Dtime_oid').val('${a.dtOid}')">退選</button></c:if>
 						<script>$("#a${w}${c}").hide();</script>		
 						<div>
 						<small>${a.ClassName}</small><br>
@@ -87,10 +82,10 @@
 					<c:forEach begin="1" end="7" var="w">		
 					<td style="font-size:14px;" valign="middle" >
 					<a id="a${w}${c}" class="close" href="#stdInfo" data-toggle="modal" onClick="checkOut(${w}, ${c}, null)">加選</a>
-					<c:forEach items="${myClass}" var="a">			
+					<c:forEach items="${myClass}" var="a">
 						<c:if test="${a.week==w && (c>=a.begin && c<=a.end)}">
-						<c:if test="${a.nonSeld eq'1' || (a.ClassNo eq schedule.ClassNo && a.opt eq'必')}"><button type="button" id="d${w}${c}" class="close" onClick="alert('依課務單位或系所規定, 此課程不可採用網路退選, 請至各部制課務單位辦理');">管制退選</button></c:if>
-						<c:if test="${a.nonSeld eq'0' && !a.ClassNo eq schedule.ClassNo || a.opt eq'選'}"><button type="submit" id="d${w}${c}" class="close" name="method:del" onClick="$('#Dtime_oid').val('${a.dtOid}')">退選</button></c:if>
+						<c:if test="${a.nonSeld==1||(a.ClassNo == schedule.ClassNo && a.opt =='必')}"><button type="button" id="d${w}${c}" class="close" onClick="alert('依課務單位或系所規定, 此課程不可採用網路退選, 請至各部制課務單位辦理');">管制退選</button></c:if>
+						<c:if test="${a.nonSeld==0 && a.ClassNo != schedule.ClassNo}"><button type="submit" id="d${w}${c}" class="close" name="method:del" onClick="$('#Dtime_oid').val('${a.dtOid}')">退選</button></c:if>
 						<script>$("#a${w}${c}").hide();</script>		
 						<div>
 						<small>${a.ClassName}</small><br>
@@ -103,18 +98,7 @@
 				</tr>
 				</c:forEach>
 			</table>		
-			</div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+			</div>		
 		</div>
 	</div>	
 </div>
@@ -125,22 +109,20 @@
 <input type="hidden" name="Dtime_oid" id="Dtime_oid">
 <script>
 function checkOut(week, begin){	
-	$.get("getCourse?term=${schedule.term}&level=${schedule.level}&week="+week+"&begin="+begin+"&"+Math.floor(Math.random()*999),
+	$.get("getCourse?term=${schedule.term}&level=${schedule.level}&week="+week+"&begin="+begin+"&a"+Math.floor(Math.random()*999),
 		function(d){		
 			write(d, week, begin, null);
 		}, "json");	
 }
 
 function checkOutByName(cs){	
-	$.get("getCourseByName?term=${schedule.term}&level=${schedule.level}&cs="+cs+"&"+Math.floor(Math.random()*999),
+	$.get("getCourseByName?term=${schedule.term}&level=${schedule.level}&cs="+cs+"&a"+Math.floor(Math.random()*999),
 		function(d){			
 			write(d, null, null, cs);
 		}, "json");	
 }
 
-
-function write(d, week, begin, cs){
-	
+function write(d, week, begin, cs){	
 	var str;
 	var ele;
 	str="";		
@@ -177,15 +159,13 @@ function write(d, week, begin, cs){
 			str="週"+week+"第"+begin+"節無適合課程";
 		}else{
 			str="沒有符合您的"+str+"課程"
-		}
-		
+		}		
 	}
 	if(cs==null){
 		$("#title").text("週"+week+"第"+begin+"節");
 	}else{
 		$("#title").text(cs+"查詢結果");
-	}
-	
+	}	
 	$("#info").append(str);
 }
 

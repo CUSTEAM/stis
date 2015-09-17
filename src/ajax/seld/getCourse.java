@@ -18,8 +18,7 @@ public class getCourse extends BaseAction{
 		this.result = result;
 	}
 
-	public String execute(){
-		
+	public String execute(){		
 		Classes c=(Classes) getSession().getAttribute("myGrade");//初入時已計算的實體或虛擬年級資訊		
 		List list=df.sqlGet("SELECT Select_Limit, (SELECT COUNT(*)FROM Seld WHERE Dtime_oid=d.Oid) as seled, " +
 		"cl.ClassName, cd.name as optName, d.credit, d.thour, d.elearning, d.nonSeld," +
@@ -32,6 +31,7 @@ public class getCourse extends BaseAction{
 		"(o.Sidno='"+c.getSchoolNo()+"' OR o.Sidno='*') AND " +
 		"(o.Didno='"+c.getDeptNo()+"' OR o.Didno='*') AND " +
 		"(o.Grade<="+c.getGrade()+" OR o.Grade='*')AND " +
+		"(o.ClassNo="+c.getSeqNo()+" OR o.ClassNo='*')AND " +
 		"d.cscode NOT IN(SELECT cscode FROM ScoreHist WHERE student_no='" +getSession().getAttribute("userid")+"' AND score>=60) AND "+
 		"dc.week='"+request.getParameter("week")+"' AND " +
 		"(dc.end>="+request.getParameter("begin")+ " AND dc.begin<="+request.getParameter("begin")+") AND d.cscode!='50000' GROUP BY d.Oid");
