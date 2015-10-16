@@ -25,7 +25,7 @@ public class ExamRegAction extends BaseAction{
 				"AND ls.level=e.level AND ls.no=e.no)as cnt3,(SELECT COUNT(*)FROM LC_exam_regs ls, stmd s, Class c WHERE " +
 				"ls.student_no=s.student_no AND c.ClassNo=s.depart_class AND c.Grade='4' AND ls.level=e.level AND ls.no=e.no)as cnt4," +
 				"s.regdate, e.* FROM LC_exam e LEFT OUTER JOIN LC_exam_regs s ON " +
-				"e.level=s.level AND e.no=s.no AND s.student_no='"+getSession().getAttribute("userid")+"'");
+				"e.level=s.level AND e.no=s.no AND s.student_no='"+getSession().getAttribute("userid")+"' ORDER BY e.note,e.level,e.no");
 		for(int i=0; i<exams.size(); i++){
 			exams.get(i).put("time",(sf.parse(exams.get(i).get("exam_end").toString()).getTime()-sf.parse(exams.get(i).get("exam_begin").toString()).getTime())/1000/60);
 		}
