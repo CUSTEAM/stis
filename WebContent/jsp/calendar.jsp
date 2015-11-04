@@ -160,7 +160,7 @@ $(document).ready(function() {
 				<span class="label label-important">缺課</span>					
 				<label class="checkbox inline">
 				
-				<c:if test="${setNow.getTime()<=date_rollcall_end.getTime()}">
+				<c:if test="${setNow.getTime()<date_rollcall_end.getTime()}">
 					<c:if test="${((now.getTime()-setNow.getTime())<777600000)}">			
 					<script>
 					if(getCookie("${weekday[w]}"+"&"+"${c}")!=null){
@@ -176,8 +176,8 @@ $(document).ready(function() {
 				</c:if>	
 				</c:if>				
 			</c:forEach>
-			<c:if test="${setNow.getTime()<=date_rollcall_end.getTime()}">
-				<c:if test="${now<=setNow &&chk eq false}">
+			<c:if test="${setNow.getTime()<date_rollcall_end.getTime()}">
+				<c:if test="${now<setNow &&chk eq false}">
 				<label class="checkbox inline">
 				<script>
 				if(getCookie("${weekday[w]}"+"&"+"${c}")!=null){

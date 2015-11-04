@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="publiclogin" extends="abstract_struts" namespace="/">		
+		<action name="Logout" class="action.Logout">
+			<result name="logout">/index.jsp</result>
+		</action>	
+		
+		<action name="Coansw" class="action.coansw.Coansw">
+			<result>/jsp/coansw/coansw.jsp</result>
+		</action>				
+	</package>
+	
+	<package name="calendar" extends="abstract_struts" namespace="/">		
+		<action name="MyCalendar" class="action.calendar.MyCalendar">
+			<result>/jsp/calendar.jsp</result>
+			<result name="intro">/jsp/calendar.jsp</result>
+		</action>
+		
+		<action name="MyDilg" class="action.calendar.MyDilg">
+			<result name="intro">/jsp/calendar/dilgAdd.jsp</result>			
+			<result name="success">/jsp/myDilgAdd.jsp</result>
+		</action>
+		
+		<action name="MyDilgAdd" class="action.calendar.MyDilgAdd">
+			<result name="intro">/jsp/calendar/dilgAddList.jsp</result>
+			<result name="add">/jsp/calendar/dilgAdd.jsp</result>			
+			<result name="success">/jsp/calendar.jsp</result>
+		</action>		
+		
+		<!-- action name="MyDilgList" class="action.calendar.MyDilgList">
+			<result>/jsp/calendar/dilgList.jsp</result>
+		</action-->
+		
+		<action name="MyDilgDetail" class="action.calendar.MyDilgDetail">
+			<result>/jsp/calendar/MyDilgDetail.jsp</result>
+		</action>
+		
+	</package>
+	
+	<package name="language" extends="abstract_struts" namespace="/">
+	    <action name="ExamReg" class="action.language.ExamRegAction">
+			<result>/jsp/language/ExamReg.jsp</result>
+		</action>
+	</package>
+	
+	<package name="score" extends="abstract_struts" namespace="/">
+	    <action name="MyScoreHist" class="action.score.MyScoreHistAction">
+			<result>/jsp/score/MyScoreHist.jsp</result>
+		</action>
+	</package>
+	
+	<package name="course" extends="abstract_struts" namespace="/">
+	    <action name="Elective" class="action.seld.ElectiveAction">
+			<result>/jsp/seld/Elective.jsp</result>
+		</action>
+	</package>
+
+</struts>

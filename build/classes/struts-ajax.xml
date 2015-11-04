@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	
+	<package name="ajax" extends="struts-default, json-default" namespace="/">		
+		<action name="delDilgApp" class="ajax.delDilgApp"/>
+		
+		<action name="initCheck" class="ajax.initCheck">
+		    <result type="json"/>
+		</action>
+	</package>
+	
+	<package name="seld" extends="struts-default, json-default" namespace="/">			
+		<action name="getCourse" class="ajax.seld.getCourse">
+		    <result type="json"/>
+		</action>
+		<action name="getCourseByName" class="ajax.seld.getCourseByName">
+		    <result type="json"/>
+		</action>
+	</package>
+	
+	
+
+</struts>
