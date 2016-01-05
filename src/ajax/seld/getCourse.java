@@ -32,7 +32,7 @@ public class getCourse extends BaseAction{
 		"(o.Didno='"+c.getDeptNo()+"' OR o.Didno='*') AND " +
 		"(o.Grade<="+c.getGrade()+" OR o.Grade='*')AND " +
 		"(o.ClassNo="+c.getSeqNo()+" OR o.ClassNo='*')AND " +
-		"d.cscode NOT IN(SELECT cscode FROM ScoreHist WHERE student_no='" +getSession().getAttribute("userid")+"' AND score>=60) AND "+
+		"d.cscode NOT IN(SELECT cscode FROM ScoreHist WHERE student_no='" +getSession().getAttribute("userid")+"' AND (score>=60||evgr_type='6')) AND "+
 		"dc.week='"+request.getParameter("week")+"' AND " +
 		"(dc.end>="+request.getParameter("begin")+ " AND dc.begin<="+request.getParameter("begin")+") AND d.cscode!='50000' GROUP BY d.Oid");
 		
@@ -46,7 +46,7 @@ public class getCourse extends BaseAction{
 		"(cl.SchoolNo='"+c.getSchoolNo()+"')AND " +
 		"(cl.DeptNo='"+c.getDeptNo()+"')AND " +
 		"(cl.Grade<="+c.getGrade()+")AND " +
-		"d.cscode NOT IN(SELECT cscode FROM ScoreHist WHERE student_no='" +getSession().getAttribute("userid")+"' AND score>=60) AND "+
+		"d.cscode NOT IN(SELECT cscode FROM ScoreHist WHERE student_no='" +getSession().getAttribute("userid")+"' AND (score>=60||evgr_type='6')) AND "+
 		"dc.week='"+request.getParameter("week")+"' AND " +
 		"(dc.end>="+request.getParameter("begin")+ " AND dc.begin<="+request.getParameter("begin")+") AND d.cscode!='50000' GROUP BY d.Oid"));
 		

@@ -41,7 +41,7 @@
 					<c:forEach items="${myClass}" var="a">			
 						<c:if test="${a.week==w && (c>=a.begin && c<=a.end)}">						
 						<c:if test="${a.nonSeld==1||(a.ClassNo == schedule.ClassNo && a.opt =='必')}"><button type="button" id="d${w}${c}" class="close" onClick="alert('依課務單位或系所規定, 此課程不可採用網路退選, 請至各部制課務單位辦理');">管制退選</button></c:if>
-						<c:if test="${a.nonSeld==0 && a.ClassNo != schedule.ClassNo}"><button type="submit" id="d${w}${c}" class="close" name="method:del" onClick="$('#Dtime_oid').val('${a.dtOid}')">退選</button></c:if>
+						<c:if test="${a.nonSeld==0 && !(a.ClassNo == schedule.ClassNo && a.opt=='必')}"><button type="submit" id="d${w}${c}" class="close" name="method:del" onClick="$('#Dtime_oid').val('${a.dtOid}')">退選</button></c:if>
 						<script>$("#a${w}${c}").hide();</script>		
 						<div>
 						<small>${a.ClassName}</small><br>

@@ -84,7 +84,7 @@ public class ElectiveAction extends BaseAction{
 				
 				//擋修課程				
 				//getSession().setAttribute("cshist", df.sqlGet("SELECT cscode FROM ScoreHist WHERE student_no='"+stdNo+"' AND score>=60"));//歷年已修課程代碼
-				List<Map>cs=df.sqlGet("SELECT cscode FROM ScoreHist WHERE student_no='"+stdNo+"' AND score>=60");
+				List<Map>cs=df.sqlGet("SELECT cscode FROM ScoreHist WHERE student_no='"+stdNo+"' AND (score>=60||evgr_type='6')");
 				List<Map>b=(List)getContext().getAttribute("dtimeBlock");
 				List<Map>bc;
 				List block=new ArrayList();				
