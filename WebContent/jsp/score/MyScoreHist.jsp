@@ -32,9 +32,8 @@ $(document).ready(function() {
 <div rel="popover" title="說明" data-content="點選學年學期檢視成績,修得總學分數與畢業資格由相關單位審核,所有成績資訊依相關單位最終留存為準" data-placement="right" class="help btn btn-warning">?</div>
 </div>
 <c:set var="now" value="<%=new java.util.Date()%>" />
-<div class="accordion" id="years">
-	
-	<div class="accordion-group">
+<div class="accordion" id="years">	
+	<div class="accordion-group" style="width:960px;">
 		<div class="accordion-heading">
 			<p class="accordion-toggle" data-toggle="collapse" data-parent="#years" href="#collapseOne"><strong>本學期課程</strong>
 			<button type="button" style="float:right;"class="btn btn-mini"><i style="margin-top:2px;" class="icon-eye-close"></i></i></button></p>
@@ -129,7 +128,7 @@ $(document).ready(function() {
 	<c:set var="credit2" value="0.0" />
 	<c:set var="credit3" value="0.0" />
 	<c:forEach items="${scoreHist}" var="s">
-	<div class="accordion-group">
+	<div class="accordion-group" style="width:960px;">
 		<div class="accordion-heading">
 			<p class="accordion-toggle" data-toggle="collapse" data-parent="#years" href="#year${s.school_year}${s.school_term}">
 			<c:set var="credit" value="${credit+s.tc}" />
@@ -226,5 +225,6 @@ $(document).ready(function() {
 		</div>
 	</div>		
 </div>
+
 </body>
 </html>
