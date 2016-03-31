@@ -1,27 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div class="navbar navbar-fixed-top">
-	<div class="navbar-inner">
-		<div class="container-fluid">
-			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span> 
-			<span class="icon-bar"> </span></a>
-			<a class="brand" href="/stis/MyCalendar">中華科技大學</a>			
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button class="navbar-toggle" type="button" data-toggle="collapse"
+				data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/stis/MyCalendar">中華科技大學</a>
+		</div>						
 			<c:if test="${!empty userid}">
-			<div id="level3menu" class="nav-collapse">
-				<ul class="nav">
-					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">學生資訊系統 <b class="caret"></b></a>
+			<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+					<li class="dropdown" class="active"><a href="#" class="dropdown-toggle" data-toggle="dropdown">學生資訊系統 <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="/stis/MyCalendar"><i class="icon-home" style="margin-top: 3px;"></i> 課表與課程資訊</a></li>
-							<li class="divider"></li>
-										
+							<li class="divider"></li>										
 							<li><a href="MyDilgAdd">線上請假</a></li>
-							<li><a href="MyDilgDetail">課程缺課列表</a></li>
-							
-							<li class="divider"></li>
+							<li><a href="MyDilgDetail">課程缺課列表</a></li>							
+							<li role="separator" class="divider"></li>
 							<li class="dropdown"><a href="Elective"><i class="icon-book" style="margin-top: 3px;"></i> 網路選課</a></li>
-							<li class="divider"></li>
-							<li class="nav-header"><i class="icon-user"></i> 資訊查詢</li>				
 							<li><a href="/stis/MyScoreHist">成績查詢</a></li>
 							<li class="dropdown"><a href="/CIS/Student/MyCsGroup.do">跨領域學程查詢</a></li>
 							<li class="dropdown"><a href="/pis/PubCsSearch">課程查詢</a></li>
@@ -38,8 +38,7 @@
 						</ul>
 					</li>		
 				</ul>				
-									
-				<ul class="nav pull-right">
+				<ul class="nav navbar-nav navbar-right">
 					<li><a href="ExamReg">語言中心考試報名</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">學習歷程檔案 <b class="caret"></b></a>
 						<ul class="dropdown-menu">					
@@ -52,15 +51,13 @@
 							<li class="dropdown"><a href="/CIS/Portfolio/REDirectory.do">數位歷程首頁</a></li>
 							<li class="dropdown"><a href="/CIS/Portfolio/Joinparty.do">競賽報名</a></li>
 							<li class="dropdown"><a href="/CIS/Portfolio/ListMyTeachers.do">任課教師列表</a></li>	
-										
 						</ul>
 					</li>							
 					<li id="xLogout" class="divider-vertical"></li>			
 					<li id="xLogout"><a href="Logout">登出</a></li>
 				</ul>
 			</div>
-			</c:if>
-			
+			</c:if>			
 		</div>
 	</div>
-</div>
+</nav>

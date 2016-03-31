@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>語言中心考試報名</title>
 <link href="/eis/inc/css/wizard-step.css" rel="stylesheet"/>
 <script>  
 $(document).ready(function() {		
@@ -19,24 +19,17 @@ $(document).ready(function() {
 </script>  
 </head>
 <body>
-<div class="alert">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <strong>語言中心考試報名</strong> 
-    <a href="MyCalendar"class="btn">返回</a>
-    <div id="funbtn" rel="popover" title="說明" 
-    data-content="點選「報名」報名，報名後點選「取消」取消報名" 
-    data-placement="right" class="btn btn-warning">?</div>
-    </div>
-
+<div class="bs-callout bs-callout-info" id="callout-helper-pull-navbar">
+    <h4>語言中心考試報名</h4>
+    <p> <a href="MyCalendar"class="btn btn-danger btn-xs">返回本學期課表</a></p>
+</div>
 <form action="ExamReg" method="post" class="form-horizontal">
 <input type="hidden" name="Oid" value="${exam.Oid}">
-<div class="wizard-steps">
-  	<div><a href="#"><span>1</span> 瀏覽考試資訊</a></div>
-  	<div><a href="#"><span>2</span> 點選報名場次梯次</a></div>
-  	<div><a href="#"><span>3</span> 確認報名資料</a></div>
-</div>
+
 
 <c:if test="${empty exams}">
+
+
 <table class="table table-hover">
 	<thead>
     	<tr class="success">
@@ -49,15 +42,23 @@ $(document).ready(function() {
 
 <c:if test="${!empty exams}">
 <input type="hidden" id="level" name="level"/><input type="hidden" id="no" name="no">
+
+
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading">考試列表</div>
+  <div class="panel-body">
+		<p>點選「報名」報名，點選「取消」取消報名</p>
+  </div>
 <table class="table table-hover">
 	<thead>
-    	<tr class="success">
+    	<tr>
 	        <th nowrap>場次資訊</th>
 	        <th nowrap>梯次</th>
 	        <th nowrap>場次</th>
 	        <th nowrap>報名期間</th>
 	        <th nowrap>考試期間</th>
-	        <th nowrap>名額資訊</th>
+	        
 	        <th nowrap>1年級</th>
 	        <th nowrap>2年級</th>
 	        <th nowrap>3年級</th>
@@ -77,7 +78,7 @@ $(document).ready(function() {
 	        <td nowrap class="text-info"><fmt:formatDate value="${e.sign_begin}" pattern="M月d日  HH:mm"/> 至 <fmt:formatDate value="${e.sign_end}" pattern="M月d日  HH:mm"/></td>	
 	        
 	        <td nowrap class="text-error"><fmt:formatDate value="${e.exam_begin}" pattern="M月d日  HH:mm"/>開始, ${e.time}分鐘</td>
-	        <td></td>
+	        
 	        <td nowrap>${e.cnt1} / ${e.grad1}</td>
 	        <td nowrap>${e.cnt2} / ${e.grad2}</td>
 	        <td nowrap>${e.cnt3} / ${e.grad3}</td>
@@ -98,6 +99,7 @@ $(document).ready(function() {
 	</c:forEach>
 	</tbody>
 </table>
+</div>
 </c:if>
 </form>  
 

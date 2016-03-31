@@ -13,50 +13,57 @@
 <link href="/eis/inc/css/wizard-step.css" rel="stylesheet"/>
 <style>
     body .modal {
-    /* new custom width */
+    /* new custom width
     width: 90%;
-    /* must be half of the width, minus scrollbar on the left (30px) */
+     must be half of the width, minus scrollbar on the left (30px)
     margin-right: 45%;
-    margin-left: -45%;
+    margin-left: -45%;*/
 }
 </style>
 </head>
 <body>
 <c:if test="${empty schedule}">
-<div class="alert alert-danger alert-block fade in">
-	<button type="button" class="close" data-dismiss="alert">&times;</button>
+<div class="bs-callout bs-callout-info" id="callout-helper-pull-navbar">
 	<h4 class="alert-heading">目前非選課期間</h4>
 	<p>選課期間及相關規則請查詢各部制課務單位公告</p>
-	<p><a class="btn btn-danger" href="MyCalendar">返回</a> <a class="btn" href="#stdInfo" data-toggle="modal" onClick="getSeldHist('${userid}')">加退選歷程</a></p>
+	<p><a class="btn btn-danger" href="MyCalendar">返回</a> <a class="btn btn-default" href="#stdInfo" data-toggle="modal" onClick="getSeldHist('${userid}')">加退選歷程</a></p>
 </div>
 </c:if>
 
 <!--form action="Elective" method="post" onSubmit="return(confirm('部份特殊情況下執行後依規定不可恢復\n確定執行加退選?')); void('')"-->
-<form action="Elective" method="post">
+<form action="Elective" method="post" class="form-inline">
+
+
+
 <!-- Modal -->
-<div id="stdInfo" class="modal hide fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-<h3 id="title"></h3>
+<div class="modal fade" id="stdInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"
+			aria-hidden="true">×</button>
+		<h3 id="title"></h3>
+      </div>
+      <div class="modal-body" id="info"></div>
+		<div class="modal-footer">
+		<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">關閉</button>
+		</div>
+    </div>
+  </div>
 </div>
-<div class="modal-body" id="info"></div>
-<div class="modal-footer">
-<button class="btn" data-dismiss="modal" aria-hidden="true">關閉</button>
-</div>
-</div>
+
 <c:if test="${!empty schedule}">
-<div class="alert alert-block fade in">	
-	<button type="button" class="close" data-dismiss="alert">&times;</button>
+<div class="bs-callout bs-callout-info" id="callout-helper-pull-navbar">
 	<table>
 		<tr>
-			<td>
+			<td style="padding-right:20px;">
 			<input readonly class="knob" data-displayInput="true" data-step="0.5" data-min="0" data-max="${schedule.max}" value="${mycredit}" 
 			<c:if test="${(schedule.max-mycredit)<2}">data-fgColor="#b94a48"</c:if> data-height="100" data-width="100"/>
 			</td>
 			<td>
 			<h4 class="alert-heading">第${schedule.term}學期, 第${schedule.level}階段選課</h4>
 			<p>本學期學分上限 ${schedule.max}學分, 下限 ${schedule.min}學分<br>已選 ${fn:length(myClass)}門課程, ${mycredit}學分, 每週 ${mythour}時數</p>
-			<p><a class="btn btn-danger" href="MyCalendar">返回課表</a> <a class="btn" href="#stdInfo" data-toggle="modal" onClick="getSeldHist('${userid}')">加退選歷程</a></p>
+			<p><a class="btn btn-danger" href="MyCalendar">返回課表</a> <a class="btn btn-default" href="#stdInfo" data-toggle="modal" onClick="getSeldHist('${userid}')">加退選歷程</a></p>
 			</td>
 		</tr>
 	</table>

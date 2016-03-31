@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>網路假單申請</title>
 <script src="/eis/inc/js/plugin/bootstrap-typeahead.js"></script>
 <script src="/eis/inc/js/plugin/bootstrap-fileupload.js"></script>
 <script src="/eis/inc/js/plugin/jquery-ui.js"></script>
@@ -13,85 +13,82 @@
 </head>
 <body>
 <form action="MyDilg" method="post" enctype="multipart/form-data">
-<div class="alert">
-
-<div class="btn-group">
-				<a class="btn" href="MyDilgDetail">缺課列表</a>
-				<a class="btn" href="MyDilgAdd">假單列表</a>
-			</div>
-			<a href="MyCalendar" class="btn btn-danger">返回課表</a>
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <strong>請注意</strong>「日期」與「節次」，修改請按&nbsp;
+<div class="bs-callout bs-callout-info" id="callout-helper-pull-navbar">
+<h4>網路假單申請</h4>
+	
+		<!--  href="MyDilgDetail">缺課列表</a>
+		<a href="MyDilgAdd">假單列表</a-->
+		
+	
+			
+    
+    <!-- strong>請注意</strong>「日期」與「節次」，修改請按&nbsp;
     <input type="submit" name="method:resetCookie" value="返回課表" class="btn btn-info"/> &nbsp;或
-    <a href="MyDilgAdd" class="btn btn">線上請假</a><br>
-    	若按瀏覽器的<strong>「上一頁」</strong>點選的節次將會被保留
+    <a href="MyDilgAdd" class="btn btn-default">線上請假</a><br>
+    	若按瀏覽器的<strong>「上一頁」</strong>點選的節次將會被保留-->
     </div>
 
 
-
-    <div class="container-fluid">
-    <div class="row-fluid">
-    <div class="span3">
-    <table class="table table-striped table-bordered">
-    	<tr>
-    		<td>日期</td>
-    		<td>節次</td>
-    	</tr>
+	
+    
+    <div class="row">
+    <div class="col-xs-12 col-md-6">
+    
+    
+    
+	<div class="panel panel-primary">
+	<div class="panel-heading">日期與節次</div>
+	<div class="panel-body">
+	  <p><b>注意事項</b></p>
+  		<p>請假若有到課, 請於課堂上告知任課老師<b>立即</b>銷假</p>
+		<p>修改審核完成的假單內容, 請至學務單位申請</p>
+	</div>
+    
+   	<ul class="list-group">
     <c:forEach items="${dilgs}" var="d">
-    	<tr>
-    		<td>
+    <li class="list-group-item">
     			${d.date}
     			<input type="hidden" name="Oid" value="${d.Oid}" />
     			<input type="hidden" name="date" value="${d.date}" />
     			<input type="hidden" name="cls" value="${d.cls}"/>
-    		</td>
-    		<td>第 ${d.cls}節</td>
-    	</tr>
+    		第 ${d.cls}節
+    </li>	
     </c:forEach>
     </table>
-     <table class="table table-bordered">
-    	<tr>
-    		<td>
-    		    <ol>
-			    	<li>預先請假若有到課, 請告知任課老師</li>
-			    	<li>已審核假單若有到課, 同上</li>			    	
-			    	<li>取消未審核假單, 請點選假單列表</li>
-			    	<li>更改已審核假別, 請連絡學務單位</li>
-			    </ol>
-    		
-    		</td>
-    	</tr>
-    </table>
     </div>
-    <div class="span9">
-    <table class="table table-striped table-bordered">
+    </div> 
+    <div class="col-xs-12 col-md-6">
+    <div class="panel panel-primary">
+	<div class="panel-heading">申請內容</div>
+	
+    <table class="table">
     	<tr>
-    		<td>假別</td>
+    		<td nowrap>假別</td>
     		<td>
-	    		<select name="abs">
-	    			<option value="1">重大傷病住院</option>
-	    			<option value="3" selected>病假</option>
-	    			<option value="4">事假</option>
-	    			<option value="7">喪假</option>
-	    			<option value="8">婚假</option>
-	    			<option value="9">產假</option>
-	    		</select>    		
+    		<select class="form-control" name="abs">
+    			<option value="1">重大傷病住院</option>
+    			<option value="3" selected>病假</option>
+    			<option value="4">事假</option>
+    			<option value="7">喪假</option>
+    			<option value="8">婚假</option>
+    			<option value="9">產假</option>
+    		</select>    		
     		</td>
     	</tr>
     	<tr>
-    		<td>事由</td>
-    		<td><input class="span5" name="reason" type="text" placeholder="非必要欄位,可容納32個字"/></td>
+    		<td nowrap>事由</td>
+    		<td><input class="form-control" name="reason" type="text" placeholder="非必要欄位,可容納32個字"/></td>
     	</tr>
     	<tr>
-    		<td>備註</td>
-    		<td><textarea class="span5" name="note" placeholder="非必要欄位,可容納64個字"></textarea></td>
+    		<td nowrap>備註</td>
+    		<td width="100%"><textarea class="form-control" name="note" placeholder="非必要欄位,可容納64個字"></textarea></td>
     	</tr>
     	<tr>
-    		<td>附件</td>
+    		<td nowrap>附件</td>
     		<td>
     		
     		<div class="fileupload fileupload-new" data-provides="fileupload" style="float:left;">    		    
-			<div class="input-append">			
+			<div class="input-group">	
 				<div class="uneditable-input">
 					<i class="icon-file fileupload-exists"></i> 
 					<span class="fileupload-preview"></span>
@@ -110,12 +107,18 @@
     		</td>
     	</tr>
     	<tr>
-    		<td colspan="2"><input type="submit" id="login" name="method:addDilg" value="完成假單" class="btn btn-danger"/></td>
+    		<td colspan="2">
+    		<div class="btn-group" role="group" aria-label="...">
+    		<input type="submit" id="login" name="method:addDilg" value="完成假單" class="btn btn-danger"/>
+    		<a class="btn btn-default" href="MyCalendar">取消</a>
+    		</div>
+    		</td>
     	</tr>
     </table>
     </div>
     </div>
     </div>
+   
 
 
 </form>

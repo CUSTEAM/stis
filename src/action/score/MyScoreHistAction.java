@@ -50,12 +50,11 @@ public class MyScoreHistAction extends BaseAction{
 		}
 		
 		//本學期:扣考status:1
-		List<Map>seld=df.sqlGet("SELECT sh.status, sh.score1 as realScore1, sh.score2 as realScore2, sh.score as realScore,IF(sh.status='1', 0,sh.score)as score,c.CampusNo,c.SchoolType,c.ClassNo,c.graduate, d.cscode,d.thour,o.name as OptName," +
+		List<Map>seld=df.sqlGet("SELECT sod.exam_mid_view, sod.exam_fin_view, sh.status, sh.score1 as realScore1, sh.score2 as realScore2, sh.score as realScore,IF(sh.status='1', 0,sh.score)as score,c.CampusNo,c.SchoolType,c.ClassNo,c.graduate, d.cscode,d.thour,o.name as OptName," +
 		"cs.chi_name,d.opt,d.credit,c.ClassName,IF(sh.status='1', 0,sh.score1)as score1,IF(sh.status='1', 0,sh.score2)as score2,IF(sh.status='1', 0,sh.score3)as score3 " +
-		"FROM Class c, Seld sh,Csno cs,CODE_DTIME_OPT o,Dtime d WHERE d.Sterm='"+getContext().getAttribute("school_term")+"'AND c.ClassNo=d.depart_class AND o.id=d.opt AND " +
+		"FROM Class c, Seld sh,Csno cs,CODE_DTIME_OPT o,Dtime d LEFT OUTER JOIN ScoreOdDate sod ON d.Oid=sod.DtimeOid WHERE d.Sterm='"+getContext().getAttribute("school_term")+"'AND c.ClassNo=d.depart_class AND o.id=d.opt AND " +
 		"d.Oid=sh.Dtime_oid AND cs.cscode=d.cscode AND sh.student_no='"+stdNo+"'AND d.cscode!='50000'");
 		
-		//List<Map>sch=df.sqlGet("SELECT * FROM SYS_SCORE_SCHEDULE s");
 		
 		//String level;
 		for(int i=0; i<seld.size();i++){			

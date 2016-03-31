@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>假單列表</title>
+<title>假單列表 - 廢止???</title>
 <script>
 $(document).ready(function() {
 	$('#funbtn').popover("show");

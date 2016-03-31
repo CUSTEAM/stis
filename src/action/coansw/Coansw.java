@@ -38,7 +38,10 @@ public class Coansw extends BaseAction{
 	}
 	
 	public String save(){	
-		if(df.sqlGetStr("SELECT coansw FROM Seld WHERE Oid="+SeldOid)!=null)return execute();//重複問卷
+		if(df.sqlGetStr("SELECT coansw FROM Seld WHERE Oid="+SeldOid)!=null){
+			System.out.println("重複");
+			return execute();//重複問卷
+		}
 		StringBuilder str=new StringBuilder();
 		int sum=0, qs=0;
 		for(int i=0; i<ans.length; i++){
@@ -51,16 +54,21 @@ public class Coansw extends BaseAction{
 				sum+=ans[i];//總計
 			}
 			str.append(ans[i]);			
-		}		
+		}
 		
 		if(check()){//check for valid	
 			//樣本數+1,有效問卷+1,總分+=sum/qs
 			df.exSql("UPDATE Dtime SET samples=samples+1, effsamples=effsamples+1, coansw=coansw+"+((float)sum/qs)+" WHERE Oid="+DtimeOid);				
 		}else{
-			request.setAttribute("msg", "前份問卷無效, 請注意偵錯題");
+			request.setAttribute("msg", "問卷無效, 請注意偵錯題");
 			df.exSql("UPDATE Dtime SET samples=samples+1 WHERE Oid="+DtimeOid);
 			//return execute();//阻擋無效回卷
 		}
+		
+		
+		
+		
+		
 		df.exSql("UPDATE Seld SET coansw='"+str+"' WHERE Oid="+SeldOid);
 		return execute();
 	}

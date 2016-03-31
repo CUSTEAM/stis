@@ -25,21 +25,33 @@ $(document).ready(function() {
 </script>  
 </head>
 <body>
-<div class="alert">
+<div class="bs-callout bs-callout-info" id="callout-helper-pull-navbar">
 <button type="button" class="close" data-dismiss="alert">&times;</button>
 <strong>成績查詢</strong>
-<a href="MyCalendar"class="btn">返回</a>
+<a href="MyCalendar"class="btn btn-danger">返回</a>
 <div rel="popover" title="說明" data-content="點選學年學期檢視成績,修得總學分數與畢業資格由相關單位審核,所有成績資訊依相關單位最終留存為準" data-placement="right" class="help btn btn-warning">?</div>
 </div>
 <c:set var="now" value="<%=new java.util.Date()%>" />
-<div class="accordion" id="years">	
-	<div class="accordion-group" style="width:960px;">
-		<div class="accordion-heading">
-			<p class="accordion-toggle" data-toggle="collapse" data-parent="#years" href="#collapseOne"><strong>本學期課程</strong>
-			<button type="button" style="float:right;"class="btn btn-mini"><i style="margin-top:2px;" class="icon-eye-close"></i></i></button></p>
+<c:set var="credit" value="0.0" />
+<c:set var="credit1" value="0.0" />
+<c:set var="credit2" value="0.0" />
+<c:set var="credit3" value="0.0" />	
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">  
+	<div class="panel panel-primary">	    
+	    <div class="panel-heading " role="tab" id="heading">
+	      <h4 class="panel-title">
+	        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="true" aria-controls="collapse">
+			本學期課程
+	        </a>
+	      </h4>
+	    </div>
+	    <div class="panel-body">
+	  	<p><b>注意事項</b></p>
+  		<p><span class="label label-as-badge label-warning">1</span> 部份科目的瀏覽日期由各部制權責單位特別設定, 程式依其設定顯示資料</p>
+		<p><span class="label label-as-badge label-danger">2</span> 學分總數與畢業資格由相關單位審核, 所有成績資訊依相關單位留存為準</p>
 		</div>
-		<div id="collapseOne" class="accordion-body collapse">
-			<div class="accordion-inner">			
+		<div id="collapse" class="panel-collapse collapse" role="tabpane2" aria-labelledby="heading">
+			
 			<table class="table table-striped">
 				<tr>
 					<td nowrap>選別</td>
@@ -67,6 +79,26 @@ $(document).ready(function() {
 					<td width="80">${s.credit}</td>
 					<td width="80">${s.thour}</td>
 					<td width="80" nowrap>
+					
+					
+					
+					<c:if test="${!empty s.exam_mid_view}">
+					<!-- 期中特殊課程 -->
+					<c:if test="${now>=s.exam_mid_view}">
+						<c:if test="${fn:indexOf(s.chi_name, '體育')<0}">
+							<c:if test="${now>=date_exam_mid_view}"><p <c:if test="${s.realScore2<pa}">class="text-error"</c:if>>${s.realScore2}</p></c:if>						
+						</c:if>										
+						<c:if test="${fn:indexOf(s.chi_name, '體育')>=0}">
+							<c:if test="${now>=date_exam_mid_view}">
+								<font size="-2">平時${s.realScore2}, 學科${s.realScore3},術科${s.realScore1}</font>						
+							</c:if>
+						</c:if>	
+					</c:if>						
+					<c:if test="${now<s.exam_mid_view}"><fmt:formatDate value="${s.exam_mid_view}" pattern="M月d日"/>公佈</c:if>
+					</c:if>
+					
+					<c:if test="${empty s.exam_mid_view}">
+					<!-- 期中普通課程-->
 					<c:if test="${now>=date_exam_mid_view}">
 						<c:if test="${fn:indexOf(s.chi_name, '體育')<0}">
 							<c:if test="${now>=date_exam_mid_view}"><p <c:if test="${s.realScore2<pa}">class="text-error"</c:if>>${s.realScore2}</p></c:if>						
@@ -78,8 +110,20 @@ $(document).ready(function() {
 						</c:if>	
 					</c:if>						
 					<c:if test="${now<date_exam_mid_view}"><fmt:formatDate value="${date_exam_mid_view}" pattern="M月d日"/>公佈</c:if>					
+					</c:if>
 					</td>
 					
+					<c:if test="${!empty s.exam_fin_view}">
+					<!-- 期末特殊課程 -->					
+					<td width="80" nowrap>
+						<c:if test="${now>=s.exam_fin_view}">
+							<p <c:if test="${s.realScore<pa}">class="text-error"</c:if>>${s.realScore}</p>
+						</c:if>							
+						<c:if test="${now<s.exam_fin_view}"><fmt:formatDate value="${s.exam_fin_view}" pattern="M月d日"/>公佈</c:if>
+					</td>					
+					</c:if>					
+					<c:if test="${empty s.exam_fin_view}">
+					<!-- 期末一般課程 -->
 					<c:if test="${s.graduate eq '0'}">
 					<td width="80" nowrap>
 						<c:if test="${now>=date_exam_fin_view}">
@@ -88,7 +132,6 @@ $(document).ready(function() {
 						<c:if test="${now<date_exam_fin_view}"><fmt:formatDate value="${date_exam_fin_view}" pattern="M月d日"/>公佈</c:if>
 					</td>
 					</c:if>
-
 					<c:if test="${s.graduate eq '1'}">
 					<td width="80" nowrap>
 						<c:if test="${now>=date_exam_grad_view}">
@@ -96,7 +139,9 @@ $(document).ready(function() {
 						</c:if>							
 						<c:if test="${now<date_exam_grad_view}"><fmt:formatDate value="${date_exam_grad_view}" pattern="M月d日"/>公佈</c:if>
 					</td>
-					</c:if>					
+					</c:if>						
+					</c:if>
+									
 					<td nowrap>
 					<c:if test="${s.status eq'1'}">					
 					 <p class="text-error">缺課達⅓</p>
@@ -119,23 +164,25 @@ $(document).ready(function() {
 					</c:if>
 					</td>
 				</tr-->
-			</table>			
-			</div>
-		</div>
-	</div>	
-	<c:set var="credit" value="0.0" />
-	<c:set var="credit1" value="0.0" />
-	<c:set var="credit2" value="0.0" />
-	<c:set var="credit3" value="0.0" />
-	<c:forEach items="${scoreHist}" var="s">
-	<div class="accordion-group" style="width:960px;">
-		<div class="accordion-heading">
-			<p class="accordion-toggle" data-toggle="collapse" data-parent="#years" href="#year${s.school_year}${s.school_term}">
+			</table>
+	    </div>
+	</div>     
+    <c:forEach items="${scoreHist}" var="s" varStatus="i">
+    <div class="panel panel-primary">
+	    <div class="panel-heading" role="tab" id="heading${i.index}">
+	      <h4 class="panel-title">
+	        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse${i.index}" aria-expanded="true" aria-controls="collapse${i.index}">
+			${s.school_year}學年第 ${s.school_term}學期 <button type="button" class="btn btn-default btn-xs">點選查看</button>
+	        </a>
+	      </h4>
+	    </div>
+	    <div class="panel-body">
+		  <p class="accordion-toggle" data-toggle="collapse" data-parent="#years" href="#year${s.school_year}${s.school_term}">
 			<c:set var="credit" value="${credit+s.tc}" />
 			<c:set var="credit1" value="${credit1+s.c1}" />
 			<c:set var="credit2" value="${credit2+s.c2}" />
 			<c:set var="credit3" value="${credit3+s.c3}" />
-			<strong>${s.school_year}學年第 ${s.school_term}學期</strong>, 
+			
 			應修 ${s.tc}學分,
 			取得必修  ${s.c1},
 			<c:if test="${s.c2>0}">選修 ${s.c2},</c:if>
@@ -145,9 +192,7 @@ $(document).ready(function() {
 			<button type="button" style="float:right;"class="btn btn-mini"><i style="margin-top:2px;" class="icon-eye-open"></i></i></button>	
 			</p>
 		</div>
-		
-		<div id="year${s.school_year}${s.school_term}" class="accordion-body collapse in">
-			<div class="accordion-inner">			
+		<div id="collapse${i.index}" class="panel-collapse collapse in" role="tabpane2" aria-labelledby="heading${i.index}">
 			<table class="table table-striped">
 				<tr>
 					<td nowrap>選別</td>
@@ -182,49 +227,46 @@ $(document).ready(function() {
 					</td>					
 				</tr>
 				</c:forEach>			
-			</table>			
-			</div>
-		</div>
-	</div>
-	</c:forEach>	
-	
-	<div class="accordion-group">
-		<div class="accordion-heading">
-		<div class="accordion-toggle" data-toggle="collapse" data-parent="#years" href="#year">
-		
-		<p >
-				<abbr title="HyperText Markup Language" class="initialism">共${fn:length(scoreHist)}學期</abbr> 應修 ${credit}學分, 必修取得  ${credit1}學分, 選修取得 ${credit2}學分,
+			</table>		
+	    </div>
+    </div>
+    </c:forEach>
+    
+    <div class="panel panel-primary">
+	    <div class="panel-heading" role="tab" id="headingt">
+	      <h4 class="panel-title">
+	        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapset" aria-expanded="true" aria-controls="collapset">
+			${fn:length(scoreHist)}個學期中的學分取得概況
+	        </a>
+	      </h4>
+	    </div>
+		<div id="collapset" class="panel-collapse collapse" role="tabpanet" aria-labelledby="headingt">
+			<div class="panel-body">
+			應修 ${credit}學分, 必修取得  ${credit1}學分, 選修取得 ${credit2}學分,
 				通識取得 ${credit3}學分, 共取得 ${credit1+credit2+credit3}學分, 不及格${credit-(credit1+credit2+credit3)}學分
-			</p>	
-			<c:if test="${!empty skill}">
+			</div>
+	    </div>
+  	</div>
+  	<c:if test="${!empty skill}">
+  	<div class="panel panel-primary">
+	    <div class="panel-heading" role="tab" id="headingp">
+	      <h4 class="panel-title">
+	        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsep" aria-expanded="true" aria-controls="collapsep">
+			已取得證照
+	        </a>
+	      </h4>
+	    </div>
+		<div id="collapsep" class="panel-collapse collapse" role="tabpanep" aria-labelledby="headingp">
 			<table class="table">
-			<tr>
-				<td><span class="label label-info">已取得證照</span></td>
-			</tr>
 			<c:forEach items="${skill}" var="s">
 			<tr>
 				<td>${s.Name}, ${s.Level} - ${s.DeptName}</td>
 			</tr>
 			</c:forEach>
 			</table>
-			</c:if>
-		
-		</table>
-		
-		
-		
-		
-		
-		<button type="button" style="float:right;"class="btn btn-mini"><i style="margin-top:2px;" class="icon-eye-close"></i></i></button></p>
-		</div>
-		</div>		
-		<div id="year" class="accordion-body collapse">
-			<div class="accordion-inner">
-			 <p class="text-error">修得總學分數與畢業資格由相關單位審核, 所有成績資訊依相關單位最終留存為準</p>
-			</div>
-		</div>
-	</div>		
+	    </div>
+  	</div>
+  	</c:if>
 </div>
-
 </body>
 </html>

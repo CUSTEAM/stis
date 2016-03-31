@@ -86,16 +86,16 @@ $(document).ready(function() {
 </head>
 <body>
 
-
+<br>
 
 	<div style="padding:5px;">
 	
 		
 		<div class="btn-group">
-			<a class="btn" href="/csis/TimeTable?student_no=${userid}">我的課表</a>
-			<a class="btn" href="MyCalendar?weekday=${weekday[0]}">上週</a> 
-			<a class="btn" href="MyCalendar">本週</a> 
-			<a class="btn" href="MyCalendar?weekday=${weekday[8]}">下週</a>
+			<a class="btn btn-default" href="/csis/TimeTable?student_no=${userid}">列印課表</a>
+			<a class="btn btn-default" href="MyCalendar?weekday=${weekday[0]}">上週</a> 
+			<a class="btn btn-default" href="MyCalendar">本週</a> 
+			<a class="btn btn-default" href="MyCalendar?weekday=${weekday[8]}">下週</a>
 		</div>
 		<!--div class="btn-group">
 		<a class="btn" href="MyDilgDetail">缺課列表</a>
@@ -104,12 +104,20 @@ $(document).ready(function() {
 		
 		
 		<a class="btn btn-danger" href="MyDilg">填寫假單</a>		
-		<button id="funbtn" rel="popover" data-content="課表畫面提供簡易請假功能,勾選節次後按下「填寫假單」可跨週多選並預先請假,全部缺曠請點選「缺席與請假」顯示完整缺曠記錄" data-placement="right" type="button" class="btn">?</button>
+		<!-- button id="funbtn" rel="popover" 
+		data-content="課表畫面提供簡易請假功能,勾選節次後按下「填寫假單」可跨週多選並預先請假,全部缺曠請點選「缺席與請假」
+		顯示完整缺曠記錄" data-placement="right" type="button" class="btn">?</button-->
 		
 	</div>	
 	
-
-	<table class="table table-bordered table table-striped">
+	<div class="panel panel-primary">
+  
+	<div class="panel-heading">${viewday[1]} 至 ${viewday[7]}</div>
+  	<div class="panel-body">
+    <p>課表畫面提供簡易請假功能,勾選節次後 <a class="btn btn-danger btn-xs" href="MyDilg">填寫假單</a> 可跨週多選並預先請假</p>
+    <p>查詢全部缺課請點選 <a class="btn btn-success btn-xs" href="MyDilgAdd">線上請假</a> 顯示完整缺課與請假記錄</p>
+  </div>
+	<table class="table table-bordered table-striped">
 		<tr>
 			<td></td>
 			<td width="14%" nowrap>${viewday[1]} 星期一</td>
@@ -129,11 +137,7 @@ $(document).ready(function() {
 		<td class="hairLineTdF" style="font-size:14px;" valign="middle">		
 		<fmt:parseDate var="setNow" value="${weekday[w]}" type="DATE" pattern="yyyy-MM-dd"/>
 		<fmt:parseDate var="begin" value="${school_term_begin}" type="DATE" pattern="yyyy-MM-dd"/>
-		<fmt:parseDate var="end" value="${school_term_end}" type="DATE" pattern="yyyy-MM-dd"/>
-		
-		
-		
-		
+		<fmt:parseDate var="end" value="${school_term_end}" type="DATE" pattern="yyyy-MM-dd"/>		
 		<c:if test="${setNow.getTime()>=begin.getTime()&&setNow.getTime()<=end.getTime()}">		
 			<c:forEach items="${allClass}" var="ac">				
 			<c:if test="${ac.week==w && (c>=ac.begin && c<=ac.end)}">			
@@ -157,9 +161,8 @@ $(document).ready(function() {
 				<c:if test="${a.result eq '1'}"><span class="label label-info">已核准</span></c:if>
 				<c:if test="${a.result eq '2'}"><span class="label label-inverse">請假未核准</span></c:if>				
 				<c:if test="${a.abs=='2'}">
-				<span class="label label-important">缺課</span>					
-				<label class="checkbox inline">
-				
+				<span class="label label-danger">缺課</span>					
+				<label>				
 				<c:if test="${setNow.getTime()<date_rollcall_end.getTime()}">
 					<c:if test="${((now.getTime()-setNow.getTime())<777600000)}">			
 					<script>
@@ -178,7 +181,7 @@ $(document).ready(function() {
 			</c:forEach>
 			<c:if test="${setNow.getTime()<date_rollcall_end.getTime()}">
 				<c:if test="${now<setNow &&chk eq false}">
-				<label class="checkbox inline">
+				<label>
 				<script>
 				if(getCookie("${weekday[w]}"+"&"+"${c}")!=null){
 					document.write("<input type=checkBox checked  onClick=\"addAbs('${weekday[w]}&${c}', '${ac.dOid}');\" /> 請假");
