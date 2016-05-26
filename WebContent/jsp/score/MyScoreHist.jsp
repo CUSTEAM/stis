@@ -13,13 +13,7 @@
 <script src="/eis/inc/js/plugin/json2.js"></script>
 <link href="/eis/inc/css/wizard-step.css" rel="stylesheet"/>
 <script>  
-$(document).ready(function() {	
-	
-	$('.help').popover("show");
-	setTimeout(function() {
-		$('.help').popover("hide");
-	}, 3000);
-	//$('.threeone').popover("show");
+$(document).ready(function() {		
     $(".collapse").collapse();
 });
 </script>  
@@ -28,8 +22,6 @@ $(document).ready(function() {
 <div class="bs-callout bs-callout-info" id="callout-helper-pull-navbar">
 <button type="button" class="close" data-dismiss="alert">&times;</button>
 <strong>成績查詢</strong>
-<a href="MyCalendar"class="btn btn-danger">返回</a>
-<div rel="popover" title="說明" data-content="點選學年學期檢視成績,修得總學分數與畢業資格由相關單位審核,所有成績資訊依相關單位最終留存為準" data-placement="right" class="help btn btn-warning">?</div>
 </div>
 <c:set var="now" value="<%=new java.util.Date()%>" />
 <c:set var="credit" value="0.0" />
@@ -40,8 +32,7 @@ $(document).ready(function() {
 	<div class="panel panel-primary">	    
 	    <div class="panel-heading " role="tab" id="heading">
 	      <h4 class="panel-title">
-	        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="true" aria-controls="collapse">
-			本學期課程
+	        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="true" aria-controls="collapse">本學期課程
 	        </a>
 	      </h4>
 	    </div>
@@ -178,17 +169,19 @@ $(document).ready(function() {
 	    </div>
 	    <div class="panel-body">
 		  <p class="accordion-toggle" data-toggle="collapse" data-parent="#years" href="#year${s.school_year}${s.school_term}">
+			
+			
 			<c:set var="credit" value="${credit+s.tc}" />
 			<c:set var="credit1" value="${credit1+s.c1}" />
 			<c:set var="credit2" value="${credit2+s.c2}" />
 			<c:set var="credit3" value="${credit3+s.c3}" />
 			
-			應修 ${s.tc}學分,
-			取得必修  ${s.c1},
+			取得${s.pc}學分,
+			必修  ${s.c1},
 			<c:if test="${s.c2>0}">選修 ${s.c2},</c:if>
-			<c:if test="${s.c3>0}"> 通識 ${s.c3},</c:if>
-			共取得 ${s.pc}學分
-			<c:if test="${(s.tc-s.c1-s.c2-s.c3)>0}">, 不及格${s.tc-s.c1-s.c2-s.c3}學分</c:if>
+			<c:if test="${s.c3>0}"> 通識 ${s.c3},</c:if>			
+			<c:if test="${(s.tc-s.c1-s.c2-s.c3)>0}">, 不及格${s.tc-s.c1-s.c2-s.c3}</c:if>
+			學分
 			<button type="button" style="float:right;"class="btn btn-mini"><i style="margin-top:2px;" class="icon-eye-open"></i></i></button>	
 			</p>
 		</div>
@@ -242,8 +235,7 @@ $(document).ready(function() {
 	    </div>
 		<div id="collapset" class="panel-collapse collapse" role="tabpanet" aria-labelledby="headingt">
 			<div class="panel-body">
-			應修 ${credit}學分, 必修取得  ${credit1}學分, 選修取得 ${credit2}學分,
-				通識取得 ${credit3}學分, 共取得 ${credit1+credit2+credit3}學分, 不及格${credit-(credit1+credit2+credit3)}學分
+			取得 ${credit1+credit2+credit3}學分, 必修  ${credit1}學分, 選修 ${credit2}學分, 通識 ${credit3}學分
 			</div>
 	    </div>
   	</div>
@@ -251,9 +243,7 @@ $(document).ready(function() {
   	<div class="panel panel-primary">
 	    <div class="panel-heading" role="tab" id="headingp">
 	      <h4 class="panel-title">
-	        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsep" aria-expanded="true" aria-controls="collapsep">
-			已取得證照
-	        </a>
+	        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsep" aria-expanded="true" aria-controls="collapsep">已取得證照</a>
 	      </h4>
 	    </div>
 		<div id="collapsep" class="panel-collapse collapse" role="tabpanep" aria-labelledby="headingp">
