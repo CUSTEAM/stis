@@ -159,6 +159,9 @@ $(document).ready(function() {
 	    </div>
 	</div>     
     <c:forEach items="${scoreHist}" var="s" varStatus="i">
+    
+    
+    <c:if test="${(s.school_year+s.school_term)ne(school_year+school_term)}">    
     <div class="panel panel-primary">
 	    <div class="panel-heading" role="tab" id="heading${i.index}">
 	      <h4 class="panel-title">
@@ -223,6 +226,7 @@ $(document).ready(function() {
 			</table>		
 	    </div>
     </div>
+    </c:if>
     </c:forEach>
     
     <div class="panel panel-primary">
