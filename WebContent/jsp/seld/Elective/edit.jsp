@@ -1,15 +1,16 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <script>
 $(document).ready(function() {		
-	$(".collapse").collapse("toggle");
+	$(".collapse").collapse("toggle");	
 	
+	$(".cancalCs").click(function() {	
+		return confirm("確定退選?");
+	});	
+	/*$(".close").click(function() {	
+		confirm("依課務單位或系所規定, 此課程不可採用網路退選, 請至各部制課務單位辦理");
+	});*/	
 });
 </script>
-
-
-
-
-
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">  	
   	
   	<div class="panel panel-primary">
@@ -85,8 +86,8 @@ $(document).ready(function() {
 					<a id="a${w}${c}" class="close" href="#stdInfo" data-toggle="modal" onClick="checkOut(${w}, ${c}, null)">加選</a>
 					<c:forEach items="${myClass}" var="a">			
 						<c:if test="${a.week==w && (c>=a.begin && c<=a.end)}">						
-						<c:if test="${a.nonSeld==1||(a.ClassNo == schedule.ClassNo && a.opt =='必')}"><button type="button" id="d${w}${c}" class="close" onClick="alert('依課務單位或系所規定, 此課程不可採用網路退選, 請至各部制課務單位辦理');">管制退選</button></c:if>
-						<c:if test="${a.nonSeld==0 && !(a.ClassNo == schedule.ClassNo && a.opt=='必')}"><button type="submit" id="d${w}${c}" class="close" name="method:del" onClick="$('#Dtime_oid').val('${a.dtOid}')">退選</button></c:if>
+						<c:if test="${a.nonSeld==1||(a.ClassNo == schedule.ClassNo && a.opt =='必')}"><button type="button" id="d${w}${c}" class="close">管制退選</button></c:if>
+						<c:if test="${a.nonSeld==0 && !(a.ClassNo == schedule.ClassNo && a.opt=='必')}"><button type="submit" id="d${w}${c}" class="close cancalCs" name="method:del" onClick="$('#Dtime_oid').val('${a.dtOid}')">退選</button></c:if>
 						<script>$("#a${w}${c}").hide();</script>		
 						<div>
 						<small>${a.ClassName}</small><br>
@@ -133,8 +134,8 @@ $(document).ready(function() {
 					<a id="a${w}${c}" class="close" href="#stdInfo" data-toggle="modal" onClick="checkOut(${w}, ${c}, null)">加選</a>
 					<c:forEach items="${myClass}" var="a">
 						<c:if test="${a.week==w && (c>=a.begin && c<=a.end)}">
-						<c:if test="${a.nonSeld==1||(a.ClassNo == schedule.ClassNo && a.opt =='必')}"><button type="button" id="d${w}${c}" class="close" onClick="alert('依課務單位或系所規定, 此課程不可採用網路退選, 請至各部制課務單位辦理');">管制退選</button></c:if>
-						<c:if test="${a.nonSeld==0 && a.ClassNo != schedule.ClassNo}"><button type="submit" id="d${w}${c}" class="close" name="method:del" onClick="$('#Dtime_oid').val('${a.dtOid}')">退選</button></c:if>
+						<c:if test="${a.nonSeld==1||(a.ClassNo == schedule.ClassNo && a.opt =='必')}"><button type="button" id="d${w}${c}" class="close">管制退選</button></c:if>
+						<c:if test="${a.nonSeld==0 && a.ClassNo != schedule.ClassNo}"><button type="submit" id="d${w}${c}" class="close cancalCs" name="method:del" onClick="$('#Dtime_oid').val('${a.dtOid}')">退選</button></c:if>
 						<script>$("#a${w}${c}").hide();</script>		
 						<div>
 						<small>${a.ClassName}</small><br>

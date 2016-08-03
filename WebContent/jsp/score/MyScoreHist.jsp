@@ -170,13 +170,10 @@ $(document).ready(function() {
 	    </div>
 	    <div class="panel-body">
 		  <p class="accordion-toggle" data-toggle="collapse" data-parent="#years" href="#year${s.school_year}${s.school_term}">
-			
-			
 			<c:set var="credit" value="${credit+s.tc}" />
 			<c:set var="credit1" value="${credit1+s.c1}" />
 			<c:set var="credit2" value="${credit2+s.c2}" />
 			<c:set var="credit3" value="${credit3+s.c3}" />
-			
 			取得${s.pc}學分,
 			必修  ${s.c1},
 			<c:if test="${s.c2>0}">選修 ${s.c2},</c:if>
