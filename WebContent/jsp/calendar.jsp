@@ -91,7 +91,7 @@ $(document).ready(function() {
 	<div style="padding:5px;">
 	
 		
-		<div class="btn-group">
+		<div class="btn-group" style="z-index:-1;">
 			<a class="btn btn-default" href="/csis/TimeTable?student_no=${userid}">列印課表</a>
 			<a class="btn btn-default" href="MyCalendar?weekday=${weekday[0]}">上週</a> 
 			<a class="btn btn-default" href="MyCalendar">本週</a> 

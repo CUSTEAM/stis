@@ -86,8 +86,8 @@ $(document).ready(function() {
 					<a id="a${w}${c}" class="close" href="#stdInfo" data-toggle="modal" onClick="checkOut(${w}, ${c}, null)">加選</a>
 					<c:forEach items="${myClass}" var="a">			
 						<c:if test="${a.week==w && (c>=a.begin && c<=a.end)}">						
-						<c:if test="${a.nonSeld==1||(a.ClassNo == schedule.ClassNo && a.opt =='必')}"><button type="button" id="d${w}${c}" class="close">管制退選</button></c:if>
-						<c:if test="${a.nonSeld==0 && !(a.ClassNo == schedule.ClassNo && a.opt=='必')}"><button type="submit" id="d${w}${c}" class="close cancalCs" name="method:del" onClick="$('#Dtime_oid').val('${a.dtOid}')">退選</button></c:if>
+						<c:if test="${a.nonSeld==1||(a.ClassNo == schedule.ClassNo && a.opt eq'必')}"><button type="button" id="d${w}${c}" class="close">管制退選</button></c:if>
+						<c:if test="${a.nonSeld==0 && !(a.ClassNo == schedule.ClassNo && a.opt eq'必')}"><button type="submit" id="d${w}${c}" class="close cancalCs" name="method:del" onClick="$('#Dtime_oid').val('${a.dtOid}')">退選</button></c:if>
 						<script>$("#a${w}${c}").hide();</script>		
 						<div>
 						<small>${a.ClassName}</small><br>
@@ -126,7 +126,7 @@ $(document).ready(function() {
 					<td width="14%" align="center">星期六</td>
 					<td width="14%" align="center">星期日</td>
 				</tr>	
-				<c:forEach begin="11" end="14" var="c">	
+				<c:forEach begin="11" end="16" var="c">	
 				<tr height="100">
 					<td>${c}</td>		
 					<c:forEach begin="1" end="7" var="w">		
@@ -134,8 +134,8 @@ $(document).ready(function() {
 					<a id="a${w}${c}" class="close" href="#stdInfo" data-toggle="modal" onClick="checkOut(${w}, ${c}, null)">加選</a>
 					<c:forEach items="${myClass}" var="a">
 						<c:if test="${a.week==w && (c>=a.begin && c<=a.end)}">
-						<c:if test="${a.nonSeld==1||(a.ClassNo == schedule.ClassNo && a.opt =='必')}"><button type="button" id="d${w}${c}" class="close">管制退選</button></c:if>
-						<c:if test="${a.nonSeld==0 && a.ClassNo != schedule.ClassNo}"><button type="submit" id="d${w}${c}" class="close cancalCs" name="method:del" onClick="$('#Dtime_oid').val('${a.dtOid}')">退選</button></c:if>
+						<c:if test="${a.nonSeld==1||(a.ClassNo == schedule.ClassNo && a.opt eq'必')}"><button type="button" id="d${w}${c}" class="close">管制退選</button></c:if>
+						<c:if test="${a.nonSeld==0 && !(a.ClassNo == schedule.ClassNo && a.opt eq'必')}"><button type="submit" id="d${w}${c}" class="close cancalCs" name="method:del" onClick="$('#Dtime_oid').val('${a.dtOid}')">退選</button></c:if>
 						<script>$("#a${w}${c}").hide();</script>		
 						<div>
 						<small>${a.ClassName}</small><br>
