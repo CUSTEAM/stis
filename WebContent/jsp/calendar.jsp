@@ -88,38 +88,25 @@ $(document).ready(function() {
 
 <br>
 
-	<div style="padding:5px;">
 	
-		
-		<div class="btn-group" style="z-index:-1;">
-			<a class="btn btn-default" href="/csis/TimeTable?student_no=${userid}">列印課表</a>
-			<a class="btn btn-default" href="MyCalendar?weekday=${weekday[0]}">上週</a> 
-			<a class="btn btn-default" href="MyCalendar">本週</a> 
-			<a class="btn btn-default" href="MyCalendar?weekday=${weekday[8]}">下週</a>
-		</div>
-		<!--div class="btn-group">
-		<a class="btn" href="MyDilgDetail">缺課列表</a>
-		<a class="btn" href="MyDilgList">假單列表</a>
-		</div-->
-		
-		
-		<a class="btn btn-danger" href="MyDilg">填寫假單</a>		
-		<!-- button id="funbtn" rel="popover" 
-		data-content="課表畫面提供簡易請假功能,勾選節次後按下「填寫假單」可跨週多選並預先請假,全部缺曠請點選「缺席與請假」
-		顯示完整缺曠記錄" data-placement="right" type="button" class="btn">?</button-->
-		
-	</div>	
 	
 	<div class="panel panel-primary">
   
 	<div class="panel-heading">${viewday[1]} 至 ${viewday[7]}</div>
   	<div class="panel-body">
-    <p>課表畫面提供簡易請假功能,勾選節次後 <a class="btn btn-danger btn-xs" href="MyDilg">填寫假單</a> 可跨週多選並預先請假</p>
-    <p>查詢全部缺課請點選 <a class="btn btn-success btn-xs" href="MyDilgAdd">線上請假</a> 顯示完整缺課與請假記錄</p>
-  </div>
+	    <p>課表畫面提供簡易請假功能,勾選節次後 <a class="btn btn-danger btn-xs" href="MyDilg">填寫假單</a> 可跨週多選並預先請假</p>
+	    <p>查詢全部缺課請點選 <a class="btn btn-success btn-xs" href="MyDilgAdd">線上請假</a> 顯示完整缺課與請假記錄</p>
+	  	<div class="btn-group">
+			<a class="btn btn-default" href="/csis/TimeTable?student_no=${userid}">列印課表</a>
+			<a class="btn btn-default" href="MyCalendar?weekday=${weekday[0]}">上週</a> 
+			<a class="btn btn-default" href="MyCalendar">本週</a> 
+			<a class="btn btn-default" href="MyCalendar?weekday=${weekday[8]}">下週</a>
+		</div>		
+		<a class="btn btn-danger" href="MyDilg"><b>填寫假單</b></a>	
+  	</div>
 	<table class="table table-bordered table-striped">
 		<tr>
-			<td></td>
+			<td><span class="glyphicon glyphicon-bell" aria-hidden="true"></span></td>
 			<td width="14%" nowrap>${viewday[1]} 星期一</td>
 			<td width="14%" nowrap>${viewday[2]} 星期二</td>
 			<td width="14%" nowrap>${viewday[3]} 星期三</td>
