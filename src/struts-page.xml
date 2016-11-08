@@ -55,5 +55,11 @@
 			<result>/jsp/seld/Elective.jsp</result>
 		</action>
 	</package>
+	
+	<package name="portfolio" extends="abstract_struts" namespace="/">
+	    <action name="ResumeManager" class="action.eps.ResumeManagerAction">
+			<result>/jsp/eps/ResumeManager.jsp</result>
+		</action>
+	</package>
 
 </struts>

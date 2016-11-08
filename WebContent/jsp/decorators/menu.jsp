@@ -46,8 +46,9 @@
 							<li class="dropdown"><a href="/CIS/Portfolio/SiteManager.do">網站管理</a></li>
 							<li class="dropdown"><a href="/CIS/Portfolio/PageManager.do">文章管理</a></li>
 							<li class="dropdown"><a href="/CIS/Portfolio/EPortfolioManager.do">學習歷程管理</a></li>
-							<li class="dropdown"><a href="/CIS/Portfolio/DownloadPortfolio">我的電子履歷</a></li>
-							<li class="dropdown"><a href="/CIS/Portfolio/EditVitae.do">編輯履歷表</a></li>
+							<!--li class="dropdown"><a href="/CIS/Portfolio/DownloadPortfolio">我的電子履歷</a></li>
+							<li class="dropdown"><a href="/CIS/Portfolio/EditVitae.do">編輯履歷表</a></li-->
+							<li class="dropdown"><a href="/stis/ResumeManager">編輯履歷表</a></li>							
 							<li class="dropdown"><a href="/CIS/Portfolio/REDirectory.do">數位歷程首頁</a></li>
 							<li class="dropdown"><a href="/CIS/Portfolio/Joinparty.do">競賽報名</a></li>
 							<li class="dropdown"><a href="/CIS/Portfolio/ListMyTeachers.do">任課教師列表</a></li>	
