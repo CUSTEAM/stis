@@ -1,2 +1,5 @@
 /action/
 /ajax/
+/struts-ajax.xml
+/struts-page.xml
+/struts.xml

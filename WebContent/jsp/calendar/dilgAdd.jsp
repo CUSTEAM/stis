@@ -72,6 +72,7 @@
     			<option value="7">喪假</option>
     			<option value="8">婚假</option>
     			<option value="9">產假</option>
+    			<option value="0">生理假</option>
     		</select>    		
     		</td>
     	</tr>

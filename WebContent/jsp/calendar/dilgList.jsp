@@ -70,6 +70,7 @@ $(document).ready(function() {
    			<option <c:if test="${d.abs eq '7'}">selected</c:if> value="7">喪假</option>
    			<option <c:if test="${d.abs eq '8'}">selected</c:if> value="8">婚假</option>
    			<option <c:if test="${d.abs eq '9'}">selected</c:if> value="9">產假</option>
+   			<option <c:if test="${d.abs eq '0'}">selected</c:if> value="0">生理假</option>
    		</select>
 		</td>
 		<td nowrap>
