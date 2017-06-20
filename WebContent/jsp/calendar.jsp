@@ -32,7 +32,7 @@ function setCookie(name, value, expires, path, domain, secure) {
     var today = new Date();
     today.setTime(today.getTime());
     if (expires){
-        expires=expires*1000*60*60; //預設1小時吧
+        expires=expires*1000*60*60; //預設1小時
     }
     var expires_date = new Date( today.getTime() + (expires) );    
     //採用escape 對ISO Latin對指定的字串編碼。所有的空格、標點符號、特殊文字以及其他非ASCII字串都將被轉化成%xx格式的字串編碼

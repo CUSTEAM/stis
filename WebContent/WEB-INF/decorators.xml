@@ -28,6 +28,7 @@
 	 <excludes>  
        <pattern>/jsp/decorators/*</pattern>
        <pattern>/Coansw</pattern>
+       <pattern>/QuestONE</pattern>
 	</excludes>
 
 </decorators>

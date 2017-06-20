@@ -60,5 +60,5 @@
 			</div>
 			</c:if>			
 		</div>
-	</div>
+	
 </nav>

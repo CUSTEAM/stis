@@ -17,14 +17,14 @@ public class Coansw extends BaseAction{
 	public String execute(){		
 		List<Map>css=df.sqlGet("SELECT s.Oid as SeldOid, d.Oid, c.chi_name, e.cname, d.elearning FROM Dtime d, Seld s, empl e, Csno c WHERE "
 		+ "d.techid IS NOT NULL AND d.cscode!='50000'AND c.cscode=d.cscode AND s.coansw IS NULL AND d.Oid=s.Dtime_oid AND d.techid=e.idno AND "
-		+ "s.student_no='"+getSession().getAttribute("userid")+"'AND d.Sterm");
+		+ "s.student_no='"+getSession().getAttribute("userid")+"'AND d.Sterm='"+getContext().getAttribute("school_term")+"'");
 		if(css.size()<1){
 			return SUCCESS;
 		}
 		Map cs=css.get(0);		
 		//questions of step
 		Map pec=new HashMap();
-		pec.put("total", df.sqlGetStr("SELECT COUNT(*) FROM Seld s, Dtime d WHERE d.techid IS NOT NULL AND d.cscode!='50000'AND s.Dtime_oid=d.Oid AND s.student_no='"+getSession().getAttribute("userid")+"'"));
+		pec.put("total", df.sqlGetStr("SELECT COUNT(*) FROM Seld s, Dtime d WHERE d.techid IS NOT NULL AND d.cscode!='50000'AND s.Dtime_oid=d.Oid AND s.student_no='"+getSession().getAttribute("userid")+"'AND d.Sterm='"+getContext().getAttribute("school_term")+"'"));
 		pec.put("edited", css.size());
 		request.setAttribute("pec", pec);
 		
@@ -39,7 +39,7 @@ public class Coansw extends BaseAction{
 	
 	public String save(){	
 		if(df.sqlGetStr("SELECT coansw FROM Seld WHERE Oid="+SeldOid)!=null){
-			System.out.println("重複");
+			//System.out.println("重複");
 			return execute();//重複問卷
 		}
 		StringBuilder str=new StringBuilder();

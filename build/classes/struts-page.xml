@@ -8,7 +8,11 @@
 		
 		<action name="Coansw" class="action.coansw.Coansw">
 			<result>/jsp/coansw/coansw.jsp</result>
-		</action>				
+		</action>
+		
+		<action name="QuestONE" class="action.coansw.QuestONE">
+			<result>/jsp/coansw/QuestONE.jsp</result>
+		</action>
 	</package>
 	
 	<package name="calendar" extends="abstract_struts" namespace="/">		

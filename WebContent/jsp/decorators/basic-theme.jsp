@@ -28,62 +28,19 @@
 <script src="/eis/inc/bootstrap/plugin/bootstrap-submenu/js/bootstrap-submenu.min.js" defer></script>
 <script src="/eis/inc/bootstrap/plugin/silviomoreto-bootstrap-select/js/bootstrap-select.min.js"></script>
 <script src="/eis/inc/bootstrap/plugin/silviomoreto-bootstrap-select/js/i18n/defaults-zh_TW.min.js"></script>
-<script>
-$.ajaxSetup ({ 
-	cache: false 
-});
-window.onbeforeunload = function() {
-	$.unblockUI();
-};
-
-$.ajax({
-	  url: "initCheck",
-	  type: "GET",
-	  dataType: "json",
-	  success: function(data) {
-		if(data.coansw>0){
-			
-			$.blockUI({ 
-	            //message: '<Iframe class="border-radius:15px;" src="Coansw"; width="100%" height="100%" scrolling="yes " frameborder="0"></iframe>', 
-	            message: '<Iframe style="border-radius:15px;" id="coansw" src="Coansw"; width="100%" height="100%" frameborder="0"></iframe>', 
-	            css: { 
-	            	width: '90%', 
-	                height:'80%',
-	                top: '10%', 
-	                left: '5%', 
-	                right: '5%', 
-	                border: 'none',
-	                'border-radius':'15px',
-  					'box-shadow': '10px 10px 20px #000'
-	            }
-	        });
-		}
-	  },
-	  
-	  error: function() {
-	    alert("ERROR!!!");
-	  }
-	});
-
-</script>
-
+<c:if test="${coanswPeriod&&QUESTPeriod}"><script src="inc/js/initCheck.js"></script></c:if>
+<c:if test="${coanswPeriod&&!QUESTPeriod&&empty cs}"><script src="inc/js/coanswCheck.js"></script></c:if>
+<c:if test="${!coanswPeriod&&QUESTPeriod&&empty QuestMap.reply}"><script src="inc/js/questCheck.js"></script></c:if>
 <decorator:head />
 </head>
 <body <decorator:getProperty property="body.onload" writeEntireProperty="true" />>
-	
-	<div id="mainmenu" style="height:40px;">
-	<%@ include file="/jsp/decorators/menu.jsp"%>
-	</div>
-	
+	<div id="mainmenu" style="height:40px;"><%@ include file="/jsp/decorators/menu.jsp"%></div>
 	<div class="content-page-3">
 		<decorator:body />
 	</div>
 	
 	<c:if test="${!empty msg}">
-		<script>
-			$(window).load(function() {
-				$('#webdialog').modal('show');
-			});
+		<script>$(window).load(function(){$('#webdialog').modal('show');});
 		</script>
 		<div class="modal fade" id="webdialog" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel" aria-hidden="true">
