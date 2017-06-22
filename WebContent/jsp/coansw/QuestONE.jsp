@@ -42,9 +42,24 @@ window.parent.$.unblockUI();</c:if>
 		<input type="hidden" name="ans" id="q${q.Oid}"/>
 		</td>
 		<td width="100%">
+		<c:if test="${q.category eq'A'}">
 		<c:forEach items="${q.options}" var="o" varStatus="i">
 		<label class="radio-inline"><input onClick="$('#q${q.Oid}').val(this.value)" type="radio" name="opt${q.Oid}" id="opt${q.Oid}" value="${i.index+1}">${o.value}</label>
 		</c:forEach>
+		</c:if>
+		
+		<c:if test="${q.category eq'B'}">
+		<c:forEach items="${q.options}" var="o" varStatus="i">
+		<label class="radio-inline">
+		<input onClick="multCheck('${q.Oid}')" 
+		type="checkBox" name="opt${q.Oid}" id="opt${q.Oid}" 
+		value="${i.index+1}">${o.value}</label>
+		</c:forEach>
+		</c:if>
+		
+		<c:if test="${q.category eq'C'}">
+		<input type="text" onKeyUp="$('#q${q.Oid}').val(this.value);" class="form-control" name="opt${q.Oid}" id="opt${q.Oid}"/>
+		</c:if>
 		</td>
 	</tr>
 	</c:forEach>
@@ -52,7 +67,21 @@ window.parent.$.unblockUI();</c:if>
 
 	
 <button class="btn btn-danger" name="method:save" type="submit">送出問卷</button>
+<script>
+var opts, v;
+function multCheck(Oid){
+	v="";
+	opts = $('form').find("input[name=opt"+Oid+"]");
+	//alert(opts.length);
+	for(i=0; i<opts.length; i++){
+		if(opts[i].checked)
+		v+=opts[i].value+".";
+	}
+	$("#q"+Oid).val(v.substring(0, v.length-1));
+	
+}
 
+</script>
 
 <!-- button onClick="window.parent.$.unblockUI()">關閉</button-->
 </form>
