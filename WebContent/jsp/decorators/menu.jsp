@@ -34,6 +34,7 @@
 							<li class="dropdown"><a href="http://192.192.230.35/ACIS">線上考試</a></li>
 							<li class="dropdown"><a href="/CIS/Student/AssessPaperReply.do">服務滿意度調查</a></li>
 							<li class="dropdown"><a href="/CIS/Student/OpinionSuggestion.do">意見反映</a></li>
+							<!--li class="dropdown"><a href="/stis/MyReaction">意見反映</a></li-->
 							<li class="dropdown"><a href="/CIS/Student/Documentation.do">學生手冊</a></li>
 						</ul>
 					</li>		

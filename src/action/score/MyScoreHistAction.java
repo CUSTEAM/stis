@@ -14,6 +14,8 @@ public class MyScoreHistAction extends BaseAction{
 		request.setAttribute("skill", df.sqlGet("SELECT l.DeptName, l.Name, l.level, s.SchoolYear, s.SchoolTerm  FROM StdSkill s LEFT "
 		+ "OUTER JOIN LicenseCode l ON s.LicenseCode=l.Code WHERE s.StudentNo='"+stdNo+"'"));
 		
+		request.setAttribute("gradresu", df.sqlGetMap("SELECT * FROM gradresu WHERE student_no='"+stdNo+"'"));
+		
 		//班級資訊
 		Map<String,String>myClass=df.sqlGetMap("SELECT c.* FROM stmd s, Class c WHERE s.depart_class=c.ClassNo AND s.student_no='"+stdNo+"'");
 		

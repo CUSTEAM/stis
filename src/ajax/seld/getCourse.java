@@ -18,7 +18,11 @@ public class getCourse extends BaseAction{
 		this.result = result;
 	}
 
-	public String execute(){		
+	public String execute(){	
+		
+		
+		
+		
 		Classes c=(Classes) getSession().getAttribute("myGrade");//初入時已計算的實體或虛擬年級資訊		
 		List list=df.sqlGet("SELECT Select_Limit, (SELECT COUNT(*)FROM Seld WHERE Dtime_oid=d.Oid) as seled, " +
 		"cl.ClassName, cd.name as optName, d.credit, d.thour, d.elearning, d.nonSeld," +

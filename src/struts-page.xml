@@ -65,5 +65,13 @@
 			<result>/jsp/eps/ResumeManager.jsp</result>
 		</action>
 	</package>
+	
+	<package name="reaction" extends="abstract_struts" namespace="/">
+    
+    	<action name="MyReaction" class="action.reaction.MyReactionAction">
+			<result>/jsp/reaction/MyReaction.jsp</result>
+		</action>
+    
+    </package>
 
 </struts>

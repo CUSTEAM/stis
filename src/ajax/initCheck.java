@@ -60,6 +60,7 @@ public class initCheck extends BaseAction{
 	private void getQuestReady(){	
 		//確認該生是否有問卷沒填
 		try{
+			
 			this.setQuestMap(df.sqlGetMap("SELECT reply FROM QUEST_RES q WHERE q.Qid="+
 			getContext().getAttribute("QUESTOid")+" AND q.student_no='"+session.get("userid")+"'"));
 		}catch(Exception e){
