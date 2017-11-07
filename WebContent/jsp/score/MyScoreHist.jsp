@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>成績查詢</title>
 <script src="/eis/inc/js/plugin/bootstrap-typeahead.js"></script>
 <script src="/eis/inc/js/plugin/bootstrap-fileupload.js"></script>
@@ -31,7 +32,9 @@ $(document).ready(function() {
 <body>
 <div class="bs-callout bs-callout-info" id="callout-helper-pull-navbar">
 <button type="button" class="close" data-dismiss="alert">&times;</button>
-<b>成績查詢</b> 開放查詢日期由各部制權責單位設定, 各項資格審查依相關單位認定為準</p>
+<h4><b>成績查詢</b></h4> 
+<p><span class="label label-as-badge label-danger">1</span> 成績公佈日期由權責單位設定 <span class="label label-as-badge label-warning">2</span> 各項資格審查依相關單位認定為準</p>
+<p><span class="label label-as-badge label-success">3</span> 已取得證照以各系填報為準 <span class="label label-as-badge label-info">4</span> 各學年成績與獎懲以相關單位公佈為準</p>
 </div>
 <c:set var="now" value="<%=new java.util.Date()%>" />
 <c:set var="credit" value="0.0" />
@@ -40,9 +43,10 @@ $(document).ready(function() {
 <c:set var="credit3" value="0.0" />	
 <div class="row">
 	 
-	<div class="col-xs-6 col-sm-3">  
+	<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">  
   		<c:if test="${gradresu.practice eq'Y'}">
   		<div class="alert alert-info-alt alert-dismissable">
+  		<div style="font-size:12px; z-index:10;position:absolute; right:30px; top:10px;">註 <span class="label label-as-badge label-warning">2</span></div>
   		<center>
   		<h1><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></h1>
 		<strong>實習</strong>取得
@@ -51,6 +55,7 @@ $(document).ready(function() {
 		</c:if>
 		<c:if test="${gradresu.practice ne'Y'}">
   		<div class="alert alert-info alert-dismissable">
+  		<div style="font-size:12px; z-index:10;position:absolute; right:30px; top:10px;">註 <span class="label label-as-badge label-warning">2</span></div>
 	 	<center>
   		<h1><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></h1>
 		<strong>實習</strong>未取得
@@ -61,20 +66,22 @@ $(document).ready(function() {
   	</div>
   	
 
-  	<div class="col-xs-6 col-sm-3">
+  	<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
   		<c:if test="${gradresu.certificate eq'Y'}">
   		<div class="alert alert-success-alt alert-dismissable">
+  		<div style="font-size:12px; z-index:10;position:absolute; right:30px; top:10px;">註 <span class="label label-as-badge label-warning">2</span></div>
   		<center>
   		<h1><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></h1>
-		<strong>專業證照</strong>取得
+		<strong>證照</strong>取得
 		</center>
 		</div>
 		</c:if>
 		<c:if test="${gradresu.certificate ne'Y'}">
 		<div class="alert alert-success alert-dismissable">
+		<div style="font-size:12px; z-index:10;position:absolute; right:30px; top:10px;">註 <span class="label label-as-badge label-warning">2</span></div>
   		<center>
   		<h1><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></h1>
-		<strong>專業證照</strong>未取得
+		<strong>證照</strong>未取得
 		</center>
 		</div>
 		</c:if>
@@ -82,20 +89,22 @@ $(document).ready(function() {
 	
 	
 	
-	<div class="col-xs-6 col-sm-3">
+	<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
 	<c:if test="${gradresu.language eq'Y'}">
 	 	<div class="alert alert-danger-alt alert-dismissable">
+	 	<div style="font-size:12px; z-index:10;position:absolute; right:30px; top:10px;">註 <span class="label label-as-badge label-warning">2</span></div>
 	 	<center>
   		<h1><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></h1>
-		<strong>語言證照</strong>取得
+		<strong>語言門檻</strong>通過
 		</center>
 		</div>
 	</c:if>
 	<c:if test="${gradresu.language ne'Y'}">
-	 	<div class="alert alert-default-alt alert-dismissable">
+	 	<div class="alert alert-danger-alt alert-dismissable">
+	 	<div style="font-size:12px; z-index:10;position:absolute; right:30px; top:10px;">註 <span class="label label-as-badge label-warning">2</span></div>
 	 	<center>
   		<h1><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></h1>
-		<strong>語言證照</strong>未取得
+		<strong>語言門檻</strong>未通過
 		</center>
 		</div>
 	</c:if>	
@@ -103,9 +112,10 @@ $(document).ready(function() {
 	
 	
 	
-	<div class="col-xs-6 col-sm-3">
+	<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
 	<c:if test="${gradresu.pass eq'Y'}">
-	 	<div class="alert alert-danger-alt alert-dismissable">
+	 	<div class="alert alert-default-alt alert-dismissable">
+	 	<div style="font-size:12px; z-index:10;position:absolute; right:30px; top:10px;">註 <span class="label label-as-badge label-warning">2</span></div>
 	 	<center>
   		<h1><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></h1>
 		<strong>畢業資格</strong>取得
@@ -114,6 +124,7 @@ $(document).ready(function() {
 	</c:if>
 	<c:if test="${gradresu.pass ne'Y'}">
 	 	<div class="alert alert-default-alt alert-dismissable">
+	 	<div style="font-size:12px; z-index:10;position:absolute; right:30px; top:10px;">註 <span class="label label-as-badge label-warning">2</span></div>
 	 	<center>
   		<h1><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></h1>
 		<strong>畢業資格</strong>未取得
@@ -132,7 +143,8 @@ $(document).ready(function() {
 	<div class="panel panel-primary">	    
 	    <div class="panel-heading " role="tab" id="heading">
 	      <h4 class="panel-title">
-	        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="true" aria-controls="collapse">本學期課程
+	        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="true" aria-controls="collapse">
+	        	本學期課程 <div style="float:right;">註 <span class="label label-as-badge label-danger">1</span></div>
 	        </a>
 	      </h4>
 	    </div>
@@ -265,6 +277,7 @@ $(document).ready(function() {
 	      <h4 class="panel-title">
 	        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse${i.index}" aria-expanded="true" aria-controls="collapse${i.index}">
 			${s.school_year}學年第 ${s.school_term}學期 <button type="button" class="btn btn-default btn-xs">點選查看</button>
+			<div style="float:right;">註 <span class="label label-as-badge label-success">3</span></div>
 	        </a>
 	      </h4>
 	    </div>
@@ -280,7 +293,7 @@ $(document).ready(function() {
 			<c:if test="${s.c3>0}"> 通識 ${s.c3},</c:if>			
 			<c:if test="${(s.tc-s.c1-s.c2-s.c3)>0}">, 不及格${s.tc-s.c1-s.c2-s.c3}</c:if>
 			學分
-			<button type="button" style="float:right;"class="btn btn-mini"><i style="margin-top:2px;" class="icon-eye-open"></i></i></button>	
+			
 			</p>
 		</div>
 		<div id="collapse${i.index}" class="panel-collapse collapse in" role="tabpane2" aria-labelledby="heading${i.index}">
@@ -329,6 +342,7 @@ $(document).ready(function() {
 	      <h4 class="panel-title">
 	        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapset" aria-expanded="true" aria-controls="collapset">
 			${fn:length(scoreHist)}個學期中的學分取得概況
+			<div style="float:right;">註 <span class="label label-as-badge label-success">3</span></div>
 	        </a>
 	      </h4>
 	    </div>
@@ -343,6 +357,7 @@ $(document).ready(function() {
 	    <div class="panel-heading" role="tab" id="headingp">
 	      <h4 class="panel-title">
 	        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsep" aria-expanded="true" aria-controls="collapsep">已取得證照</a>
+	        <div style="float:right;">註 <span class="label label-as-badge label-info">4</span></div>
 	      </h4>
 	    </div>
 		<div id="collapsep" class="panel-collapse collapse" role="tabpanep" aria-labelledby="headingp">

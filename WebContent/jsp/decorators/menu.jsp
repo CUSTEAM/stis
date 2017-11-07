@@ -22,7 +22,7 @@
 							<li><a href="MyDilgDetail">課程缺課列表</a></li>							
 							<li role="separator" class="divider"></li>
 							<li class="dropdown"><a href="Elective"><i class="icon-book" style="margin-top: 3px;"></i> 網路選課</a></li>
-							<li><a href="/stis/MyScoreHist">成績查詢</a></li>
+							<li><a href="/stis/MyScoreHist">成績與畢業門檻</a></li>
 							<li class="dropdown"><a href="/CIS/Student/MyCsGroup.do">跨領域學程查詢</a></li>
 							<li class="dropdown"><a href="/pis/PubCsSearch">課程查詢</a></li>
 							<li class="dropdown"><a href="/pis/PubCsSearch">教師留校時間</a></li>
@@ -34,7 +34,7 @@
 							<li class="dropdown"><a href="http://192.192.230.35/ACIS">線上考試</a></li>
 							<li class="dropdown"><a href="/CIS/Student/AssessPaperReply.do">服務滿意度調查</a></li>
 							<li class="dropdown"><a href="/CIS/Student/OpinionSuggestion.do">意見反映</a></li>
-							<!--li class="dropdown"><a href="/stis/MyReaction">意見反映</a></li-->
+							<li class="dropdown"><a href="/stis/MyReaction">意見反映</a></li>
 							<li class="dropdown"><a href="/CIS/Student/Documentation.do">學生手冊</a></li>
 						</ul>
 					</li>		
