@@ -18,10 +18,10 @@
 						<ul class="dropdown-menu">
 							<li><a href="/stis/MyCalendar"><i class="icon-home" style="margin-top: 3px;"></i> 課表與課程資訊</a></li>
 							<li class="divider"></li>										
-							<li><a href="MyDilgAdd">線上請假</a></li>
-							<li><a href="MyDilgDetail">課程缺課列表</a></li>							
+							<li><a href="/stis/MyDilgAdd">線上請假</a></li>
+							<li><a href="/stis/MyDilgDetail">課程缺課列表</a></li>							
 							<li role="separator" class="divider"></li>
-							<li class="dropdown"><a href="Elective"><i class="icon-book" style="margin-top: 3px;"></i> 網路選課</a></li>
+							<li class="dropdown"><a href="/stis/Elective"><i class="icon-book" style="margin-top: 3px;"></i> 網路選課</a></li>
 							<li><a href="/stis/MyScoreHist">成績與畢業門檻</a></li>
 							<li class="dropdown"><a href="/CIS/Student/MyCsGroup.do">跨領域學程查詢</a></li>
 							<li class="dropdown"><a href="/pis/PubCsSearch">課程查詢</a></li>
@@ -34,13 +34,13 @@
 							<li class="dropdown"><a href="http://192.192.230.35/ACIS">線上考試</a></li>
 							<li class="dropdown"><a href="/CIS/Student/AssessPaperReply.do">服務滿意度調查</a></li>
 							<li class="dropdown"><a href="/CIS/Student/OpinionSuggestion.do">意見反映</a></li>
-							<li class="dropdown"><a href="/stis/MyReaction">意見反映</a></li>
+							<li class="dropdown"><a href="/pis/StdReaction">意見反映</a></li>
 							<li class="dropdown"><a href="/CIS/Student/Documentation.do">學生手冊</a></li>
 						</ul>
 					</li>		
 				</ul>				
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="ExamReg">語言中心考試報名</a></li>
+					<li><a href="/stis/ExamReg">語言中心考試報名</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">學習歷程檔案 <b class="caret"></b></a>
 						<ul class="dropdown-menu">					
 							<li class="dropdown"><a href="/CIS/Portfolio/UcanLogin.do">UCAN職能平台</a></li>
@@ -56,7 +56,7 @@
 						</ul>
 					</li>							
 					<li id="xLogout" class="divider-vertical"></li>			
-					<li id="xLogout"><a href="Logout">登出</a></li>
+					<li id="xLogout"><a href="/stis/Logout">登出</a></li>
 				</ul>
 			</div>
 			</c:if>			
