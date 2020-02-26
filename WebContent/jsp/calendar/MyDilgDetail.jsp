@@ -169,7 +169,7 @@
 			</tr>
 			</c:forEach>
 			</table>
-			<c:if test="${c.elearn_dilg>0}">遠距課程缺課時數: <span class="label label-important">${c.elearn_dilg}</span></c:if>
+			<c:if test="${c.elearn_dilg>0}">遠距課程缺課時數: ${c.elearn_dilg}</c:if>
 		    </div>
 	  	</div>
 	</div>

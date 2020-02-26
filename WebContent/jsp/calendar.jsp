@@ -147,27 +147,12 @@ $(document).ready(function() {
 				<c:if test="${a.result==null&& a.abs ne 2 && a.abs ne 5}"><span class="label label-warning">審核中</span></c:if>
 				<c:if test="${a.result eq '1'}"><span class="label label-info">已核准</span></c:if>
 				<c:if test="${a.result eq '2'}"><span class="label label-inverse">請假未核准</span></c:if>				
-				<c:if test="${a.abs=='2'}">
-				<span class="label label-danger">缺課</span>					
-				<label>				
-				<c:if test="${setNow.getTime()<date_rollcall_end.getTime()}">
-					<c:if test="${((now.getTime()-setNow.getTime())<777600000)}">			
-					<script>
-					if(getCookie("${weekday[w]}"+"&"+"${c}")!=null){
-						document.write("<input type=checkBox checked  onClick=\"addAbs('${weekday[w]}&${c}', '${ac.dOid}');\" /> 請假");
-					}else{
-						document.write("<input type=checkBox onClick=\"addAbs('${weekday[w]}&${c}', '${ac.dOid}');\" /> 請假");
-					}
-					</script>
-					</c:if>
-				</c:if>
-				
-				</label>					
-				</c:if>	
+				<c:if test="${a.abs=='2'}"><span class="label label-danger">缺課</span><label></label></c:if>	
 				</c:if>				
 			</c:forEach>
+			
 			<c:if test="${setNow.getTime()<date_rollcall_end.getTime()}">
-				<c:if test="${now<setNow &&chk eq false}">
+				<c:if test="${ (    ( now.getTime() - setNow.getTime() )  <777600000   )   }">
 				<label>
 				<script>
 				if(getCookie("${weekday[w]}"+"&"+"${c}")!=null){
@@ -176,8 +161,9 @@ $(document).ready(function() {
 					document.write("<input type=checkBox onClick=\"addAbs('${weekday[w]}&${c}', '${ac.dOid}');\" /> 請假");
 				}
 				</script>
-				</label>
-				</c:if>	
+				</label>				
+				</c:if>
+				
 			</c:if>
 			</div>			
 			</c:if>			

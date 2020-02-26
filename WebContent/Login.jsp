@@ -1,5 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ include file="/taglibs.jsp"%>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -40,7 +39,7 @@
 		<tr>
 			<td width="50%"></td>
 			<td valign="middle">
-			<%@ include file="include/msg.jsp"%>			
+			
 			<html:form action="/Login.jspx" method="post" onsubmit="$.blockUI({theme:true, title:'登入', message:'執行中，請稍後'});">
 			<table class="logininBody">		
 				<tr>

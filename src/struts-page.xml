@@ -4,6 +4,10 @@
 	<package name="publiclogin" extends="abstract_struts" namespace="/">		
 		<action name="Logout" class="action.Logout">
 			<result name="logout">/index.jsp</result>
+		</action>
+		
+		<action name="TalkLogin" class="action.TalkLogin">		
+			<result>/jsp/TalkLogin.jsp</result>	
 		</action>	
 		
 		<action name="Coansw" class="action.coansw.Coansw">
@@ -16,7 +20,7 @@
 	</package>
 	
 	<package name="calendar" extends="abstract_struts" namespace="/">		
-		<action name="MyCalendar" class="action.calendar.MyCalendar">
+		<action name="MyCalendar" class="action.calendar.StdCalendar">
 			<result>/jsp/calendar.jsp</result>
 			<result name="intro">/jsp/calendar.jsp</result>
 		</action>
@@ -66,6 +70,12 @@
 		</action>
 	</package>
 	
-	
+	<package name="reaction" extends="abstract_struts" namespace="/">
+    
+    	<action name="StdReaction" class="action.reaction.StdReactionAction">
+			<result>/jsp/reaction/StdReaction.jsp</result>
+		</action>
+    
+    </package>
 
 </struts>

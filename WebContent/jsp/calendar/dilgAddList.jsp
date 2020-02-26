@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ page import="java.util.Date" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,6 +46,8 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
+<c:set var="now" value="<%=new Date()%>"/>
+<c:set var="someday" />
 <div class="bs-callout bs-callout-info" id="callout-helper-pull-navbar">		
 		<h4>網路假單申請</h4>
 		<div class="btn-group">
@@ -159,20 +161,21 @@ $(document).ready(function() {
 						</c:if>
 						<table class="table">
 						<c:forEach items="${a.ds}" var="s">
-							<tr><td>${s.date} 第${s.cls}節</td></tr>
+							<fmt:parseDate var="someday" value="${s.date}" type="DATE" pattern="yyyy-MM-dd"/>
+							<tr><td>${s.date} 第${s.cls}節 </td></tr>
 						</c:forEach>
 						</table>
 						<c:if test="${!empty a.reply}">
 							<div class="alert alert-success">${a.reply}</div>
 						</c:if>
      					<c:if test="${a.ds[0].earlier=='1'&&!a.over}">
-							<input type="button" class="btn btn-danger btn-xs" onClick="delDilg(${a.Oid})"  value="刪除" />
+							<input type="button" class="btn btn-danger btn-xs" onClick="delDilg(${a.Oid})"  value="刪除假單 (預)" />
 						</c:if>
 						
-						<c:if test="${a.ds[0].earlier!='1'&&a.result==null}">
-						<input type="button" class="btn btn-danger btn-xs" onClick="delDilg(${a.Oid})"  value="刪除" />
+						<c:if test="${a.ds[0].earlier!='1'&&a.result==null&& someday>now}">
+						<input type="button" class="btn btn-danger btn-xs" onClick="delDilg(${a.Oid})"  value="刪除假單" />
 						</c:if>
-		      			
+		      			<c:if test="${someday<now}">於點名期間內可請任課老師勾選到課，過期請至各部制學務單位申請。</c:if>
 		        		</div>
 		    		</div>
   				</div>

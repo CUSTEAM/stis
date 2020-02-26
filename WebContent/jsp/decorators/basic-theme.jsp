@@ -68,6 +68,18 @@
 			</div>
 		</div>
 	</c:if>	
+<script>
+onlineCheck();
+var timer;
+setInterval(function() {
+	onlineCheck();
+}, 10000); 
 
+function onlineCheck(){	
+	$.getJSON('onlineCheck', function(d){	
+		ipin=JSON.stringify(d, null, 2);
+	});
+}
+</script>
 </body>
 </html>

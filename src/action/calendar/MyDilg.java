@@ -80,13 +80,20 @@ public class MyDilg extends BaseAction{
 				Object obj = i.next();
 				days++;
 			}
-			
-			if(days>3||Integer.parseInt(abs)>=6){//dilg rule6,7,8,9不論天數都必需送學務長審核
+			//舊dilg rule6,7,8,9不論天數都必需送學務長審核
+			//2018/9/27, <=3天內導師>3<5系主任>5部學務主任
+			/*if(days>3||Integer.parseInt(abs)>=6){
 				da.setDefaultLevel("3");//預設層級最大為3
 			}else{
 				da.setDefaultLevel(String.valueOf(days));
-			}		
-			da.setRealLevel("1");//層級1:導師
+			}*/
+			//2018-9-27, <=3天內導師>3<5系副主任>5部學務主任
+			
+			//2019-9-27
+			if(days<3)da.setDefaultLevel("1");
+			if(days==3 || days==4)da.setDefaultLevel("2");
+			if(days>4)da.setDefaultLevel("3");
+			da.setRealLevel("1");//預設層級1:導師
 			df.update(da);
 		}catch(Exception e){
 			Message m=new Message();

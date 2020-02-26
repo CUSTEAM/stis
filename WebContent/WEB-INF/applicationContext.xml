@@ -30,6 +30,14 @@
             	<value>model/Dilg.hbm.xml</value>
             	<value>model/DilgApply.hbm.xml</value>
             	<value>model/Classes.hbm.xml</value>
+            	<value>model/Task.hbm.xml</value>
+            	<value>model/Task_hist.hbm.xml</value>
+            	<value>model/Mail.hbm.xml</value>
+            	<value>model/MailReceiver.hbm.xml</value>
+            	<value>model/MailAttache.hbm.xml</value>
+            	<value>model/WeatherHist.hbm.xml</value>
+            	<value>model/Wwpass.hbm.xml</value>
+            	<value>model/SysLogSecurity.hbm.xml</value>
             </list>
         </property>
     </bean>

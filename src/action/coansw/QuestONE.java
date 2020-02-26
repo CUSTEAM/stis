@@ -8,7 +8,7 @@ public class QuestONE extends BaseAction{
 	
 	public String execute(){
 		request.setAttribute("QuestMap", df.sqlGetMap("SELECT reply FROM QUEST_RES q WHERE q.Qid="+
-		getContext().getAttribute("QUESTOid")+" AND q.student_no='"+session.get("userid")+"'"));
+		getContext().getAttribute("QUESTOid")+" AND q.student_no='"+session.get("userid")+"'ORDER BY q.Oid DESC"));
 		return SUCCESS;
 	}
 	

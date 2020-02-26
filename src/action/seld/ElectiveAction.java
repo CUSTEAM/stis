@@ -65,8 +65,9 @@ public class ElectiveAction extends BaseAction{
 				//當下學期而且不為第3階段時虛擬升級
 				if(getContext().getAttribute("school_term").equals("2")&&!schedule.get("level").equals("3")){
 					try{
-						clazz=(Classes) df.hqlGetListBy("FROM Classes WHERE CampusNo='"+clazz.getCampusNo()+"' AND SchoolNo='"+clazz.getSchoolNo()+"' AND DeptNo='"+clazz.getDeptNo()+"' AND Grade='"+(clazz.getGrade())+1+"' AND SeqNo='"+clazz.getSeqNo()+"'").get(0);
+						clazz=(Classes) df.hqlGetListBy("FROM Classes WHERE CampusNo='"+clazz.getCampusNo()+"' AND SchoolNo='"+clazz.getSchoolNo()+"' AND DeptNo='"+clazz.getDeptNo()+"' AND Grade='"+(clazz.getGrade()+1)+"' AND SeqNo='"+clazz.getSeqNo()+"'").get(0);
 					}catch(Exception e){
+						e.printStackTrace();
 						Message msg=new Message();
 						msg.setError("沒有班級可供升級");
 						this.savMessage(msg);

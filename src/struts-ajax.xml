@@ -8,6 +8,11 @@
 		<action name="initCheck" class="ajax.initCheck">
 		    <result type="json"/>
 		</action>
+		
+		<!-- 記錄線上人數 -->
+		<action name="onlineCheck" class="ajax.onlineCheck">
+		    <result type="json"/>
+		</action>
 	</package>
 	
 	<package name="seld" extends="struts-default, json-default" namespace="/">			

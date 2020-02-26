@@ -33,8 +33,18 @@ $(document).ready(function() {
 <div class="bs-callout bs-callout-info" id="callout-helper-pull-navbar">
 <button type="button" class="close" data-dismiss="alert">&times;</button>
 <h4><b>成績查詢</b></h4> 
-<p><span class="label label-as-badge label-danger">1</span> 成績公佈日期由權責單位設定 <span class="label label-as-badge label-warning">2</span> 各項資格審查依相關單位認定為準</p>
-<p><span class="label label-as-badge label-success">3</span> 已取得證照以各系填報為準 <span class="label label-as-badge label-info">4</span> 各學年成績與獎懲以相關單位公佈為準</p>
+<small>
+<table >
+	<tr>
+	<td style="padding:3px;"><span class="label label-as-badge label-danger">1</span> 成績公佈日期由權責單位設定 </td>
+	<td style="padding:3px;"><span class="label label-as-badge label-warning">2</span> 各項資格審查依相關單位認定為準</p></td>
+	</tr>
+	<tr>
+	<td style="padding:3px;"><span class="label label-as-badge label-success">3</span> 已取得證照以各系填報為準</td>
+	<td style="padding:3px;"><span class="label label-as-badge label-info">4</span> 各學年成績與獎懲以相關單位公佈為準</td>
+	</tr>
+</table>
+</small>
 </div>
 <c:set var="now" value="<%=new java.util.Date()%>" />
 <c:set var="credit" value="0.0" />
@@ -43,7 +53,7 @@ $(document).ready(function() {
 <c:set var="credit3" value="0.0" />	
 <div class="row">
 	 
-	<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">  
+	<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">  
   		<c:if test="${gradresu.practice eq'Y'}">
   		<div class="alert alert-info-alt alert-dismissable">
   		<div style="font-size:12px; z-index:10;position:absolute; right:30px; top:10px;">註 <span class="label label-as-badge label-warning">2</span></div>
@@ -66,7 +76,7 @@ $(document).ready(function() {
   	</div>
   	
 
-  	<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+  	<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
   		<c:if test="${gradresu.certificate eq'Y'}">
   		<div class="alert alert-success-alt alert-dismissable">
   		<div style="font-size:12px; z-index:10;position:absolute; right:30px; top:10px;">註 <span class="label label-as-badge label-warning">2</span></div>
@@ -89,7 +99,7 @@ $(document).ready(function() {
 	
 	
 	
-	<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+	<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 	<c:if test="${gradresu.language eq'Y'}">
 	 	<div class="alert alert-danger-alt alert-dismissable">
 	 	<div style="font-size:12px; z-index:10;position:absolute; right:30px; top:10px;">註 <span class="label label-as-badge label-warning">2</span></div>
@@ -112,7 +122,7 @@ $(document).ready(function() {
 	
 	
 	
-	<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+	<!-- div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
 	<c:if test="${gradresu.pass eq'Y'}">
 	 	<div class="alert alert-default-alt alert-dismissable">
 	 	<div style="font-size:12px; z-index:10;position:absolute; right:30px; top:10px;">註 <span class="label label-as-badge label-warning">2</span></div>
@@ -131,7 +141,7 @@ $(document).ready(function() {
 		</center>
 		</div>
 	</c:if>	
-	</div>
+	</div-->
 	
 	
 	
@@ -220,7 +230,8 @@ $(document).ready(function() {
 					<!-- 期末特殊課程 -->					
 					<td width="80" nowrap>
 						<c:if test="${now>=s.exam_fin_view}">
-							<p <c:if test="${s.realScore<pa}">class="text-error"</c:if>>${s.realScore}</p>
+							<c:if test="${s.status ne'1'}"><p <c:if test="${s.realScore<pa}">class="text-error"</c:if>>${s.realScore}</p></c:if>
+							<c:if test="${s.status eq'1'}"><p class="text-error">0</p></c:if>
 						</c:if>							
 						<c:if test="${now<s.exam_fin_view}"><fmt:formatDate value="${s.exam_fin_view}" pattern="M月d日"/>公佈</c:if>
 					</td>					
@@ -230,7 +241,8 @@ $(document).ready(function() {
 					<c:if test="${s.graduate eq '0'}">
 					<td width="80" nowrap>
 						<c:if test="${now>=date_exam_fin_view}">
-							<p <c:if test="${s.realScore<pa}">class="text-error"</c:if>>${s.realScore}</p>
+							<c:if test="${s.status ne'1'}"><p <c:if test="${s.realScore<pa}">class="text-error"</c:if>>${s.realScore}</p></c:if>
+							<c:if test="${s.status eq'1'}"><p class="text-error">0</p></c:if>
 						</c:if>							
 						<c:if test="${now<date_exam_fin_view}"><fmt:formatDate value="${date_exam_fin_view}" pattern="M月d日"/>公佈</c:if>
 					</td>
@@ -238,7 +250,8 @@ $(document).ready(function() {
 					<c:if test="${s.graduate eq '1'}">
 					<td width="80" nowrap>
 						<c:if test="${now>=date_exam_grad_view}">
-							<p <c:if test="${s.realScore<pa}">class="text-error"</c:if>>${s.realScore}</p>
+							<c:if test="${s.status ne'1'}"><p <c:if test="${s.realScore<pa}">class="text-error"</c:if>>${s.realScore}</p></c:if>
+							<c:if test="${s.status eq'1'}"><p class="text-error">0</p></c:if>
 						</c:if>							
 						<c:if test="${now<date_exam_grad_view}"><fmt:formatDate value="${date_exam_grad_view}" pattern="M月d日"/>公佈</c:if>
 					</td>
