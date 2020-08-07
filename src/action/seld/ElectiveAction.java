@@ -20,7 +20,7 @@ public class ElectiveAction extends BaseAction{
 	public String Dtime_oid;
 	
 	public String execute(){
-		
+		if(stdNo==null)return SUCCESS;
 		Date now=new Date();
 		SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd HH:mm");		
 		//重複用資訊,包含學生虛擬或實體年級、選課期間、「歷年」已選課程(本學期需動態取得)...等選課必要之固定資訊，只取一次存放。		

@@ -20,10 +20,13 @@ public class getCourse extends BaseAction{
 
 	public String execute(){	
 		
-		
+		if(getSession().getAttribute("myGrade")==null) {
+			return SUCCESS;
+		}
 		
 		
 		Classes c=(Classes) getSession().getAttribute("myGrade");//初入時已計算的實體或虛擬年級資訊		
+		System.out.println(c.getClassName());
 		List list=df.sqlGet("SELECT Select_Limit, (SELECT COUNT(*)FROM Seld WHERE Dtime_oid=d.Oid) as seled, " +
 		"cl.ClassName, cd.name as optName, d.credit, d.thour, d.elearning, d.nonSeld," +
 		"d.Oid, c.chi_name, dc.week, dc.begin, dc.end, e.cname FROM CODE_DTIME_OPT cd," +
