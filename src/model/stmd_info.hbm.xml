@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="model.stmd_info" table="stmd_info" catalog="CIS">
+        <id name="Oid" type="java.lang.Integer">
+            <column name="Oid" />
+            <generator class="identity" />
+        </id>          
+        
+        <property name="student_no" type="java.lang.String">
+            <column name="student_no" />
+        </property>
+        <property name="AborigineCode" type="java.lang.String">
+            <column name="AborigineCode" />
+        </property>
+        <property name="editime" type="java.lang.String">
+            <column name="editime" />
+        </property>
+        <property name="AborigineCode_f" type="java.lang.String">
+            <column name="AborigineCode_f" />
+        </property>
+        <property name="AborigineCode_m" type="java.lang.String">
+            <column name="AborigineCode_m" />
+        </property>
+        <property name="FirstCollegeStd" type="java.lang.String">
+            <column name="FirstCollegeStd" />
+        </property>
+        <property name="Education_f" type="java.lang.String">
+            <column name="Education_f" />
+        </property>
+        <property name="Education_m" type="java.lang.String">
+            <column name="Education_m" />
+        </property>
+    </class>
+</hibernate-mapping>
