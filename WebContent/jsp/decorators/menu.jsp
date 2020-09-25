@@ -31,6 +31,7 @@
 							<li class="dropdown-submenu">
 							<a><i class="icon-calendar" style="margin-top: 5px;"></i> 其他功能</a>
 								<ul class="dropdown-menu">
+									<li class="dropdown"><a href="/stis/StdInfoEditor">學籍卡更新</a></li>
 									<li class="dropdown"><a href="/CIS/Student/MyCsGroup.do">跨領域學程查詢</a></li>
 									<!-- li><a href="/CIS/Student/MyOnlineServices4Reg.do">線上文件申請</a></li>
 									

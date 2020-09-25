@@ -38,6 +38,7 @@
             	<value>model/WeatherHist.hbm.xml</value>
             	<value>model/Wwpass.hbm.xml</value>
             	<value>model/SysLogSecurity.hbm.xml</value>
+            	<value>model/stmd_info.hbm.xml</value>
             </list>
         </property>
     </bean>

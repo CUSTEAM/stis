@@ -17,6 +17,12 @@
 		<action name="QuestONE" class="action.coansw.QuestONE">
 			<result>/jsp/coansw/QuestONE.jsp</result>
 		</action>
+		
+		<action name="StdInfoEditor" class="action.eps.StdInfoEditorAction">
+			<result>/jsp/coansw/StdInfoEditor.jsp</result>
+		</action>
+		
+		
 	</package>
 	
 	<package name="calendar" extends="abstract_struts" namespace="/">		
