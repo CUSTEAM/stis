@@ -19,9 +19,9 @@
 <p>本程式依照相關單位辦理調查統計工作，各項題目及選項由相關單位制定。</p>
 </div>
 <input type="hidden" name="Oid" value="${si.Oid}" />
-<div class="container">
+
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  <div class="panel panel-default">
+  <div class="panel panel-primary">
     <div class="panel-heading" role="tab" id="headingOne">
       <h4 class="panel-title">
         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -32,7 +32,7 @@
     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">
       <div class="panel-body" >
         <div class="form-group col-xs-12 floating-label-form-group controls">
-                    <label for="AborigineCode">您的身份</label>
+                    <label for="AborigineCode">我的身份</label> (身份證明文件中註記族別)
                     <select name="AborigineCode" id="AborigineCode" class="form-control">
 						<option value="">無</option>
 						<c:forEach items="${CODE_ABORIGINE}" var="d">
@@ -117,7 +117,7 @@
       </div>
     </div>
   </div>
-  <div class="panel panel-default">
+  <div class="panel panel-primary">
     <div class="panel-heading" role="tab" id="headingTwo">
       <h4 class="panel-title">
         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -128,7 +128,7 @@
     <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
         <div class="form-group col-xs-12 floating-label-form-group controls">
-                    <label for="Education_f">請問您父親(或主要照顧您的男性監護人)的最高學歷是</label> 
+                    <label for="Education_f">請問您父親</label> (或主要照顧您的男性監護人)的最高學歷是 
                     <select name="Education_f" id="Education_f" class="form-control">
                     	<option <c:if test="${si.Education_f eq '6'}">selected</c:if> value="6">不知道</option>
 						<option <c:if test="${si.Education_f eq '1'}">selected</c:if> value="1">小學畢業或沒上過學</option>
@@ -142,7 +142,7 @@
                 </div>
                 
                <div class="form-group col-xs-12 floating-label-form-group controls">
-                   <label for="Education_m">請問您母親(或主要照顧您的女性監護人)的最高學歷是</label> 
+                   <label for="Education_m">請問您母親</label> (或主要照顧您的女性監護人)的最高學歷是
                    <select name="Education_m" id="Education_m" class="form-control">
                    		<option <c:if test="${si.Education_m eq '6'}">selected</c:if> value="6">不知道</option>
 						<option <c:if test="${si.Education_m eq '1'}">selected</c:if> value="1">小學畢業或沒上過學</option>
@@ -156,7 +156,7 @@
                </div>
                
                <div class="form-group col-xs-12 floating-label-form-group controls">
-                   <label for="FirstCollegeStd">是否為家族第一代大學生:家族三代(學生之曾祖父母、祖父母及父母)皆無人上大專</label>
+                   <label for="FirstCollegeStd">是否為家族第一代大學生</label> 家族三代(學生之曾祖父母、祖父母及父母)皆無人上大專
                    <select name="FirstCollegeStd" id="FirstCollegeStd" class="form-control">
 					<option <c:if test="${si.FirstCollegeStd eq '0'}">selected</c:if> value="0">否</option>
 					<option <c:if test="${si.FirstCollegeStd eq '1'}">selected</c:if> value="1">是</option>
@@ -185,7 +185,7 @@
     </div>
   </div-->
 </div>
-</div>
+
 </form>
 </body>
 </html>
