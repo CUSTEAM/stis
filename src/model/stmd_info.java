@@ -8,8 +8,45 @@ public class stmd_info {
 	AborigineCode_m,
 	FirstCollegeStd,
 	Education_f,
-	Education_m;
+	Education_m,
+	AborigineListen,
+	AborigineSpeak,
+	AborigineRead,
+	AborigineWrite;
+
 	
+	public String getAborigineListen() {
+		return AborigineListen;
+	}
+
+	public void setAborigineListen(String aborigineListen) {
+		AborigineListen = aborigineListen;
+	}
+
+	public String getAborigineSpeak() {
+		return AborigineSpeak;
+	}
+
+	public void setAborigineSpeak(String aborigineSpeak) {
+		AborigineSpeak = aborigineSpeak;
+	}
+
+	public String getAborigineRead() {
+		return AborigineRead;
+	}
+
+	public void setAborigineRead(String aborigineRead) {
+		AborigineRead = aborigineRead;
+	}
+
+	public String getAborigineWrite() {
+		return AborigineWrite;
+	}
+
+	public void setAborigineWrite(String aborigineWrite) {
+		AborigineWrite = aborigineWrite;
+	}
+
 	private Integer Oid;
 
 	public String getStudent_no() {

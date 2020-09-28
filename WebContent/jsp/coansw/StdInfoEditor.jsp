@@ -19,13 +19,13 @@
 <p>本程式依照相關單位辦理調查統計工作，各項題目及選項由相關單位制定。</p>
 </div>
 <input type="hidden" name="Oid" value="${si.Oid}" />
-
+<div class="container">
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne">
       <h4 class="panel-title">
         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          族群別  (具原住民族籍)
+          族群別  (具原住民族籍者填寫)
         </a>
       </h4>
     </div>
@@ -66,7 +66,53 @@
                 </div>
                 
                 
-                <p class="help-block text-danger"><button name="method:save" type="submit" class="btn btn-success">儲存</button></p> 
+                <div class="form-group col-xs-12 floating-label-form-group controls">
+                    <label for="AborigineListen">熟悉族語程度: 聽</label> 
+                    <select name="AborigineListen" id="AborigineListen" class="form-control">
+						<option <c:if test="${si.AborigineListen eq '1'}">selected</c:if> value="1">完全不會</option>
+						<option <c:if test="${si.AborigineListen eq '2'}">selected</c:if> value="2">會一點</option>
+						<option <c:if test="${si.AborigineListen eq '3'}">selected</c:if> value="3">普通</option>
+						<option <c:if test="${si.AborigineListen eq '4'}">selected</c:if> value="4">好</option>
+						<option <c:if test="${si.AborigineListen eq '5'}">selected</c:if> value="5">非常好</option>						
+					</select>
+                    <p class="help-block text-danger"></p>
+                </div>
+                
+                <div class="form-group col-xs-12 floating-label-form-group controls">
+                    <label for="AborigineSpeak">熟悉族語程度: 說</label> 
+                    <select name="AborigineSpeak" id="AborigineSpeak" class="form-control">
+						<option <c:if test="${si.AborigineSpeak eq '1'}">selected</c:if> value="1">完全不會</option>
+						<option <c:if test="${si.AborigineSpeak eq '2'}">selected</c:if> value="2">會一點</option>
+						<option <c:if test="${si.AborigineSpeak eq '3'}">selected</c:if> value="3">普通</option>
+						<option <c:if test="${si.AborigineSpeak eq '4'}">selected</c:if> value="4">好</option>
+						<option <c:if test="${si.AborigineSpeak eq '5'}">selected</c:if> value="5">非常好</option>
+					</select>
+                    <p class="help-block text-danger"></p>
+                </div>
+                
+                <div class="form-group col-xs-12 floating-label-form-group controls">
+                    <label for="AborigineRead">熟悉族語程度: 讀</label> 
+                    <select name="AborigineRead" id="AborigineRead" class="form-control">
+						<option <c:if test="${si.AborigineRead eq '1'}">selected</c:if> value="1">完全不會</option>
+						<option <c:if test="${si.AborigineRead eq '2'}">selected</c:if> value="2">會一點</option>
+						<option <c:if test="${si.AborigineRead eq '3'}">selected</c:if> value="3">普通</option>
+						<option <c:if test="${si.AborigineRead eq '4'}">selected</c:if> value="4">好</option>
+						<option <c:if test="${si.AborigineRead eq '5'}">selected</c:if> value="5">非常好</option>
+					</select>
+                    <p class="help-block text-danger"></p>
+                </div>
+                
+                <div class="form-group col-xs-12 floating-label-form-group controls">
+                    <label for="AborigineWrite">熟悉族語程度: 寫</label> 
+                    <select name="AborigineWrite" id="AborigineWrite" class="form-control">
+						<option <c:if test="${si.AborigineWrite eq '1'}">selected</c:if> value="1">完全不會</option>
+						<option <c:if test="${si.AborigineWrite eq '2'}">selected</c:if> value="2">會一點</option>
+						<option <c:if test="${si.AborigineWrite eq '3'}">selected</c:if> value="3">普通</option>
+						<option <c:if test="${si.AborigineWrite eq '4'}">selected</c:if> value="4">好</option>
+						<option <c:if test="${si.AborigineWrite eq '5'}">selected</c:if> value="5">非常好</option>
+					</select>
+                    <p class="help-block text-danger"></p>
+                </div>
       
       </div>
     </div>
@@ -83,13 +129,14 @@
       <div class="panel-body">
         <div class="form-group col-xs-12 floating-label-form-group controls">
                     <label for="Education_f">請問您父親(或主要照顧您的男性監護人)的最高學歷是</label> 
-                    <select name="Education_f" id="Education_f" class="form-control">						
+                    <select name="Education_f" id="Education_f" class="form-control">
+                    	<option <c:if test="${si.Education_f eq '6'}">selected</c:if> value="6">不知道</option>
 						<option <c:if test="${si.Education_f eq '1'}">selected</c:if> value="1">小學畢業或沒上過學</option>
 						<option <c:if test="${si.Education_f eq '2'}">selected</c:if> value="2">國中畢業</option>
 						<option <c:if test="${si.Education_f eq '3'}">selected</c:if> value="3">高中職畢業</option>
 						<option <c:if test="${si.Education_f eq '4'}">selected</c:if> value="4">大學或專科畢業</option>
 						<option <c:if test="${si.Education_f eq '5'}">selected</c:if> value="5">研究所畢業</option>
-						<option <c:if test="${si.Education_f eq '6'}">selected</c:if> value="6">不知道</option>					
+											
 					</select>
                     <p class="help-block text-danger"></p>
                 </div>
@@ -97,12 +144,13 @@
                <div class="form-group col-xs-12 floating-label-form-group controls">
                    <label for="Education_m">請問您母親(或主要照顧您的女性監護人)的最高學歷是</label> 
                    <select name="Education_m" id="Education_m" class="form-control">
-					<option <c:if test="${si.Education_m eq '1'}">selected</c:if> value="1">小學畢業或沒上過學</option>
+                   		<option <c:if test="${si.Education_m eq '6'}">selected</c:if> value="6">不知道</option>
+						<option <c:if test="${si.Education_m eq '1'}">selected</c:if> value="1">小學畢業或沒上過學</option>
 						<option <c:if test="${si.Education_m eq '2'}">selected</c:if> value="2">國中畢業</option>
 						<option <c:if test="${si.Education_m eq '3'}">selected</c:if> value="3">高中職畢業</option>
 						<option <c:if test="${si.Education_m eq '4'}">selected</c:if> value="4">大學或專科畢業</option>
 						<option <c:if test="${si.Education_m eq '5'}">selected</c:if> value="5">研究所畢業</option>
-						<option <c:if test="${si.Education_m eq '6'}">selected</c:if> value="6">不知道</option>
+						
 					</select>
                    <p class="help-block text-danger"></p>
                </div>
@@ -116,12 +164,12 @@
                    <p class="help-block text-danger"></p>
                </div>  
                
-               <p class="help-block text-danger"><button name="method:save" type="submit" class="btn btn-success">儲存</button></p>      
+               
       </div>
     </div>
   </div>
-  <br>
-  <button name="method:save" type="submit" class="btn btn-danger">全部儲存</button>
+  <p></p>
+  <p><button name="method:save" type="submit" class="btn btn-danger">全部儲存</button></p>
   <!-- div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingThree">
       <h4 class="panel-title">
@@ -136,6 +184,7 @@
       </div>
     </div>
   </div-->
+</div>
 </div>
 </form>
 </body>

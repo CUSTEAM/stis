@@ -23,7 +23,11 @@ public class StdInfoEditorAction extends BaseAction{
 	AborigineCode_m,
 	FirstCollegeStd,
 	Education_f,
-	Education_m;
+	Education_m,
+	AborigineListen,
+	AborigineSpeak,
+	AborigineRead,
+	AborigineWrite;
 	
 	
 	public String save() {
@@ -36,13 +40,15 @@ public class StdInfoEditorAction extends BaseAction{
 		si.setStudent_no(getSession().getAttribute("userid").toString());
 		si.setAborigineCode(AborigineCode);
 		si.setAborigineCode_f(AborigineCode_f);
-		si.setAborigineCode_m(AborigineCode_m);
-		
+		si.setAborigineCode_m(AborigineCode_m);		
 		si.setEducation_f(Education_f);
 		si.setEducation_m(Education_m);
-		si.setFirstCollegeStd(FirstCollegeStd);
-		df.update(si);
-		
+		si.setFirstCollegeStd(FirstCollegeStd);		
+		si.setAborigineListen(AborigineListen);
+		si.setAborigineSpeak(AborigineSpeak);
+		si.setAborigineRead(AborigineRead);
+		si.setAborigineWrite(AborigineWrite);		
+		df.update(si);	
 		
 		return execute();
 	}

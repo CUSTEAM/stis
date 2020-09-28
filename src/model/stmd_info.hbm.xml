@@ -31,6 +31,19 @@
         </property>
         <property name="Education_m" type="java.lang.String">
             <column name="Education_m" />
+        </property>        
+        <property name="AborigineWrite" type="java.lang.String">
+            <column name="AborigineWrite" />
         </property>
+        <property name="AborigineRead" type="java.lang.String">
+            <column name="AborigineRead" />
+        </property>
+        <property name="AborigineSpeak" type="java.lang.String">
+            <column name="AborigineSpeak" />
+        </property>
+        <property name="AborigineListen" type="java.lang.String">
+            <column name="AborigineListen" />
+        </property>
+        
     </class>
 </hibernate-mapping>
