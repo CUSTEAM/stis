@@ -44,6 +44,8 @@
         <property name="AborigineListen" type="java.lang.String">
             <column name="AborigineListen" />
         </property>
-        
+        <property name="Hometown" type="java.lang.String">
+            <column name="Hometown" />
+        </property>
     </class>
 </hibernate-mapping>

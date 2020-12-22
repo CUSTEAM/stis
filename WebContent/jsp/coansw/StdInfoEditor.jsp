@@ -42,6 +42,11 @@
                     <p class="help-block text-danger"></p>
                 </div>
                 
+                <div class="form-group col-xs-12 floating-label-form-group controls">
+                    <label for="Hometown">所屬原鄉 (原住民族地區)</label> 
+                    <input type="text" name="Hometown" id="Hometown" value="${si.Hometown}" class="form-control"/>
+                    <p class="help-block text-danger"></p>
+                </div>
                 
                 <div class="form-group col-xs-12 floating-label-form-group controls">
                     <label for="AborigineCode_f">父親的身份</label> 

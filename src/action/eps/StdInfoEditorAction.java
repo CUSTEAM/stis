@@ -27,7 +27,8 @@ public class StdInfoEditorAction extends BaseAction{
 	AborigineListen,
 	AborigineSpeak,
 	AborigineRead,
-	AborigineWrite;
+	AborigineWrite,
+	Hometown;
 	
 	
 	public String save() {
@@ -48,6 +49,7 @@ public class StdInfoEditorAction extends BaseAction{
 		si.setAborigineSpeak(AborigineSpeak);
 		si.setAborigineRead(AborigineRead);
 		si.setAborigineWrite(AborigineWrite);		
+		si.setHometown(Hometown);
 		df.update(si);	
 		
 		return execute();

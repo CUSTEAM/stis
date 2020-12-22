@@ -12,9 +12,18 @@ public class stmd_info {
 	AborigineListen,
 	AborigineSpeak,
 	AborigineRead,
-	AborigineWrite;
+	AborigineWrite,
+	Hometown;
 
 	
+	public String getHometown() {
+		return Hometown;
+	}
+
+	public void setHometown(String hometown) {
+		Hometown = hometown;
+	}
+
 	public String getAborigineListen() {
 		return AborigineListen;
 	}
