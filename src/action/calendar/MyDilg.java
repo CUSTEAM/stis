@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -60,6 +61,38 @@ public class MyDilg extends BaseAction{
 	public String addDilg() throws IOException, ParseException{		
 		Date now=new Date();
 		SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd");
+		
+		//2020/12/29生理假28天內不得重複
+		if(abs.equals("0")) {
+			
+			if(df.sqlGetStr("SELECT sex FROM stmd WHERE student_no='"+getSession().getAttribute("userid")+"'").equals("1")) {
+				Message msg=new Message();
+				msg.setError("依校方規定男同學不可申請");
+				this.savMessage(msg);
+				//response.sendRedirect(request.getContextPath() + "/MyDilg");
+	            return SUCCESS;
+			}
+			
+			Calendar c=Calendar.getInstance();
+			c.setTime(sf.parse(date[0]));
+			c.add(Calendar.DAY_OF_YEAR, -28);
+			List<Map>lastDays=df.sqlGet("SELECT date FROM Dilg WHERE student_no='"+getSession().getAttribute("userid")+"'AND abs='0' AND date>='"+sf.format(c.getTime())+"'");
+			if(lastDays.size()>0) {
+				Message msg=new Message();
+				msg.setError("依校方規定於前次請假日期 "+lastDays.get(0).get("date")+"的 28天內不可重複申請");
+				this.savMessage(msg);
+				//response.sendRedirect(request.getContextPath() + "/MyDilg");
+	            return SUCCESS;
+			}
+			
+		}
+		
+		
+		
+		
+		
+		
+		
 		String tutor=df.sqlGetStr("SELECT tutor FROM Class c, stmd s WHERE c.ClassNo=s.depart_class AND s.student_no='"+getSession().getAttribute("userid")+"'");
 		
 		DilgApply da=new DilgApply();
@@ -90,6 +123,7 @@ public class MyDilg extends BaseAction{
 			//2018-9-27, <=3天內導師>3<5系副主任>5部學務主任
 			
 			//2019-9-27
+			
 			if(days<3)da.setDefaultLevel("1");
 			if(days==3 || days==4)da.setDefaultLevel("2");
 			if(days>4)da.setDefaultLevel("3");

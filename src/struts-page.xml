@@ -33,7 +33,7 @@
 		
 		<action name="MyDilg" class="action.calendar.MyDilg">
 			<result name="intro">/jsp/calendar/dilgAdd.jsp</result>			
-			<result name="success">/jsp/myDilgAdd.jsp</result>
+			<result name="success">/jsp/calendar/dilgAdd.jsp</result>
 		</action>
 		
 		<action name="MyDilgAdd" class="action.calendar.MyDilgAdd">
