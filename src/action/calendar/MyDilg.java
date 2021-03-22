@@ -63,6 +63,7 @@ public class MyDilg extends BaseAction{
 		SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd");
 		
 		//2020/12/29生理假28天內不得重複
+		//2021/3/22生輔組通知取消生理假限制
 		if(abs.equals("0")) {
 			
 			if(df.sqlGetStr("SELECT sex FROM stmd WHERE student_no='"+getSession().getAttribute("userid")+"'").equals("1")) {
@@ -73,7 +74,7 @@ public class MyDilg extends BaseAction{
 	            return SUCCESS;
 			}
 			
-			Calendar c=Calendar.getInstance();
+			/*Calendar c=Calendar.getInstance();
 			c.setTime(sf.parse(date[0]));
 			c.add(Calendar.DAY_OF_YEAR, -28);
 			List<Map>lastDays=df.sqlGet("SELECT date FROM Dilg WHERE student_no='"+getSession().getAttribute("userid")+"'AND abs='0' AND date>='"+sf.format(c.getTime())+"'");
@@ -83,7 +84,7 @@ public class MyDilg extends BaseAction{
 				this.savMessage(msg);
 				//response.sendRedirect(request.getContextPath() + "/MyDilg");
 	            return SUCCESS;
-			}
+			}*/
 			
 		}
 		
