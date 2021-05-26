@@ -39,6 +39,7 @@
 									<li><a href="/CIS/Student/Documentation.do">學生手冊</a></li>
 									<li class="dropdown"><a href="/CIS/Student/PhoneAndAddress.do">個人聯絡資料</a></li-->
 									<!--li><a href="http://ap26.cust.edu.tw/ACIS">線上考試</a></li-->
+									<li><a href="/CIS/Student/Documentation.do">學生手冊</a></li>
 									<li class="dropdown"><a href="/CIS/Individual/ChangePassword.do">更改密碼</a></li>
 									<li class="dropdown"><a href="/stis/StdReaction">意見反映</a></li>	
 								</ul>

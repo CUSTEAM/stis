@@ -147,7 +147,7 @@
 		  	</c:if>
 		  	
 		</div>    	
-    	<a class="btn btn-default">查看${c.dilg_period}節缺課記錄</a>
+    	<a class="btn btn-default">查看缺課記錄</a>
   		</div>
 	  	<div id="collapse${i.index}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading${i.index}">
 		    <div class="panel-body">
